@@ -10,83 +10,42 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-
+using WebAPI.DTO;
+using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
     [ApiController]
+   // [Authorize]
     [Route("[controller]")]
 
     public class UsersController : Controller
     {
-        LibraryDbContext db;
+        private readonly IUserService _userService;
 
-        public UsersController(LibraryDbContext context)
+        public UsersController(IUserService userService)
         {
-            db = context;
+            this._userService = userService;
         }
 
-        [Authorize]
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> Get()
+        public ActionResult<IEnumerable<UserDTO>> Get()
         {
-            return await db.Users.ToListAsync();
+
+            IEnumerable<UserDTO> objectList = _userService.GetUsers();
+            return Ok(objectList);
         }
 
-       
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> Get(int id)
-        {
-            User user = await db.Users.FirstOrDefaultAsync(x => x.Id == id);
-            if (user == null)
-                return NotFound();
-            return new ObjectResult(user);
-        }
-
-
+        [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<User>> Post(User user)
+        public ActionResult<User> Post(UserDTO user)
         {
             if (user == null)
             {
                 return BadRequest();
             }
 
-            db.Users.Add(user);
-            await db.SaveChangesAsync();
-            return Ok(user);
-        }
-
-
-        [HttpPut]
-        public async Task<ActionResult<User>> Put(User user)
-        {
-            if (user == null)
-            {
-                return BadRequest();
-            }
-            if (!db.Users.Any(x => x.Id == user.Id))
-            {
-                return NotFound();
-            }
-
-            db.Update(user);
-            await db.SaveChangesAsync();
-            return Ok(user);
-        }
-
- 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> Delete(int id)
-        {
-            User user = db.Users.FirstOrDefault(x => x.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            db.Users.Remove(user);
-            await db.SaveChangesAsync();
-            return Ok(user);
+            _userService.CreateUser(user);
+            return Ok();
         }
     }
 }

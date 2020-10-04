@@ -14,6 +14,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Entities.DataAccess;
 using Microsoft.IdentityModel.Tokens;
+using AutoMapper;
+using WebAPI.Mapping;
+using WebAPI.Repositories;
+using WebAPI.Services;
 
 namespace WebAPI
 {
@@ -57,13 +61,24 @@ namespace WebAPI
                                 ValidateIssuerSigningKey = true,
                 };
             });
-
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddControllers();
             services.AddDbContext<LibraryDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("LibraryMSSQL"));
             });
+
+
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         

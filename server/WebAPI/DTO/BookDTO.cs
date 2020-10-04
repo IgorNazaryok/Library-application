@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace WebAPI.DTO
 {
-    public class Post
+    public class BookDTO
     {
         public int Id { get; set; }
         [Required]
-        public string Title { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string Text { get; set; }
-        [Required]
-        public string Author { get; set; }
-        [Required]
-        public DateTime Date { get; set; }
-
+        public int Amount { get; set; }
+        public List<AuthorDTO> Authors { get; set; }
     }
 }
