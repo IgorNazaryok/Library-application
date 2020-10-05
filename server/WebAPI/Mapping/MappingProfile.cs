@@ -19,19 +19,17 @@ namespace WebAPI.Mapping
                         el => new AuthorDTO
                         {
                             Id = el.Author.Id,
-                            FullName = el.Author.FullName,
-
+                            FullName = el.Author.FullName
                         })
                     )
                 );
-                //.ForMember(dto => dto.GenreTitles, opt => opt.MapFrom(
-                //    route => route.BookGenreTitles.ToList().Select(
-                //        el => new GenreDTO { Id = el.GenreTitle.Id, Name = el.GenreTitle.Name })
-                //    )
-                //);
-   
+            CreateMap<BookDTO, Book>();
+
             CreateMap<User, UserDTO>();
             CreateMap<UserDTO, User>();
+
+            CreateMap<Author, AuthorDTO>();
+            CreateMap<AuthorDTO, Author>();
 
 
 

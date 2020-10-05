@@ -10,6 +10,8 @@ namespace WebAPI.Services
     {
         List<BookDTO> GetBooks();
         BookDTO GetBookById(int id);
-        void CreateBook(BookDTO bookDTO);
+        int CreateBook(BookDTO bookDTO);
+        void Update(BookDTO bookDTO);
+        void Delete(int id);
     }
 }

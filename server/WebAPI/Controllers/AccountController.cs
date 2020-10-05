@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("authenticate")]
         public IActionResult Token(User user)
         {
             var identity = GetIdentity(user.Email, user.Password);

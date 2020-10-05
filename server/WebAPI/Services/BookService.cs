@@ -25,17 +25,24 @@ namespace WebAPI.Services
             var books = bookRepository.GetAllBooks();
             return mapper.Map<List<BookDTO>>(books.ToList());
         }
-
         public BookDTO GetBookById(int id)
         {
             var book = bookRepository.GetBookById(id);
             return mapper.Map<BookDTO>(book);
         }
-
-        public void CreateBook(BookDTO bookDTO)
+        public int CreateBook(BookDTO bookDTO)
         {
             Book book = mapper.Map<BookDTO, Book>(bookDTO);
-            bookRepository.Create(book);
+            return bookRepository.Create(book);
+        }
+        public void Update(BookDTO bookDTO)
+        {
+            Book book = mapper.Map<BookDTO, Book>(bookDTO);
+            bookRepository.Update(book);
+        }
+        public void Delete(int id)        
+        {            
+            bookRepository.Delete(id);
         }
     }
 }

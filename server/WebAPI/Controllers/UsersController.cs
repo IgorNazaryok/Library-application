@@ -11,6 +11,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebAPI.DTO;
+using WebAPI.Models;
 using WebAPI.Services;
 
 namespace WebAPI.Controllers
@@ -21,17 +22,17 @@ namespace WebAPI.Controllers
 
     public class UsersController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IUserService userService;
 
         public UsersController(IUserService userService)
         {
-            this._userService = userService;
+            this.userService = userService;
         }
 
         public ActionResult<IEnumerable<UserDTO>> Get()
         {
 
-            IEnumerable<UserDTO> objectList = _userService.GetUsers();
+            IEnumerable<UserDTO> objectList = userService.GetUsers();
             return Ok(objectList);
         }
 
@@ -44,8 +45,20 @@ namespace WebAPI.Controllers
                 return BadRequest();
             }
 
-            _userService.CreateUser(user);
+            userService.CreateUser(user);
             return Ok();
+        }
+        
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Token([FromBody]AuthenticateRequest model)
+        {
+            var response = userService.Authenticate(model);
+
+            if (response == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(response);
         }
     }
 }

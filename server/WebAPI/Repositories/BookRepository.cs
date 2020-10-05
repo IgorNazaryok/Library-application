@@ -1,5 +1,6 @@
 ﻿using Entities.DataAccess;
 using Entities.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -30,10 +31,26 @@ namespace WebAPI.Repositories
                     .Where(x => x.Id == id)
                     .First();
         }
-        public void Create(Book book)
+        public int Create(Book book)
         {
             _dbContext.Books.Add(book);
             _dbContext.SaveChanges();
+            Book newBook = _dbContext.Books.FirstOrDefault(x => x.Name == book.Name);
+            return newBook.Id;
+        }
+        public void Update(Book book)
+        {
+            _dbContext.Update(book);
+            _dbContext.SaveChanges();
+        }
+        public void Delete(int id)
+        {
+            Book book = _dbContext.Books.FirstOrDefault(x => x.Id == id);
+            if (book != null)
+            {
+                _dbContext.Books.Remove(book);
+                _dbContext.SaveChanges();
+            }
         }
     }
 }

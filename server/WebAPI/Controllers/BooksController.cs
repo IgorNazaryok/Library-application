@@ -21,67 +21,52 @@ namespace WebAPI.Controllers
 
     public class BooksController : Controller
     {
-        private readonly IBookService _booksService;
+        private readonly IBookService booksService;
+        private readonly IAuthorService authorService;
+        private readonly IBookAuthorsService booksAuthorService;
 
-        public BooksController(IBookService booksService)
+        public BooksController(IBookService booksService, IAuthorService authorService, IBookAuthorsService booksAuthorService)
         {
-            this._booksService = booksService;
+            this.booksService = booksService;
+            this.authorService = authorService;
+            this.booksAuthorService = booksAuthorService;
         }
 
         [AllowAnonymous]
         [HttpGet]
         public ActionResult GetAllBooks()
         {
-            List<BookDTO> objectList = _booksService.GetBooks();
+            List<BookDTO> objectList = booksService.GetBooks();
             return Ok(objectList);
-        }
-
-       
+        }        
         [HttpGet("{id}")]
-        public IActionResult GetBooksById(int id)
+        public ActionResult GetBooksById(int id)
         {
-            BookDTO objectList = _booksService.GetBookById(id);
+            BookDTO objectList = booksService.GetBookById(id);
             return Ok(objectList);
         }
-
-
         [HttpPost]
-        public ActionResult<Book> Post(BookDTO book)
+        public ActionResult<Book> Post(BookDTO bookDTO)
         {
-            _booksService.CreateBook(book);
+            int bookId = booksService.CreateBook(bookDTO);
+            List <int> authorsId = authorService.CreateAuthor(bookDTO.Authors);
+            booksAuthorService.AddBookAuthors(bookId, authorsId);
             return Ok();
         }
+        [HttpPut]
+        public ActionResult<Book> Put(BookDTO bookDTO)
+        {
+            booksService.Update(bookDTO);
+            return Ok();
+        }
+        [HttpDelete("{id}")]
+        public ActionResult<Book> Delete(int BookId)
+        {
+            List<int> AuthorsID=booksAuthorService.DeleteBookAuthors(BookId).ToList();
+            booksService.Delete(BookId);
+            authorService.Delete(AuthorsID);
 
-
-        //[HttpPut]
-        //public async Task<ActionResult<Book>> Put(Book book)
-        //{
-        //    if (book == null)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    if (!db.Books.Any(x => x.Id == book.Id))
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.Update(book);
-        //    await db.SaveChangesAsync();
-        //    return Ok(book);
-        //}
-
- 
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<Book>> Delete(int id)
-        //{
-        //    Book book = db.Books.FirstOrDefault(x => x.Id == id);
-        //    if (book == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    db.Books.Remove(book);
-        //    await db.SaveChangesAsync();
-        //    return Ok(book);
-        //}
+            return Ok();
+        }
     }
 }

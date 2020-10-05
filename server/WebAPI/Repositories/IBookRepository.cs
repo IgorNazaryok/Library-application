@@ -11,6 +11,9 @@ namespace WebAPI.Repositories
     {
         List<Book> GetAllBooks();
         public Book GetBookById(int id);
-        void Create(Book book);
+        int Create(Book book);
+        void Update(Book book);
+        void Delete(int id);
+
     }
 }

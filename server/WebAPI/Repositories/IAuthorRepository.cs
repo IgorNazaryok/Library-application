@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.DTO;
-using WebAPI.Models;
 
 namespace WebAPI.Repositories
 {
-    public interface IUserRepository : IRepository<UserDTO>
+    public interface IAuthorRepository : IRepository<AuthorDTO>
     {
-        IEnumerable<User> GetAllUsers();
-        void Create(User user);
+        int Create(Author author);
+        void Delete(int BookId);
     }
 }
