@@ -1,0 +1,6 @@
+<div class="books"
+*ngIf='books$ | async as books'
+>
+  <app-book *ngFor="let book of books" [book]="book" [isAutentificated]="isAutentificated"></app-book>
+
+</div>

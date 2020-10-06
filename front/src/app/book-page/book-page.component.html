@@ -1,0 +1,14 @@
+<div class="book"
+*ngIf='book$ | async as book'>
+    <div class="header">
+        <h1>{{book.name}}</h1>
+        <button routerLink="/"
+        class="btn btn-link">На главную</button>
+    </div>
+    <div class="info">
+        <strong>{{book.amount}}</strong>       
+    </div>
+    <div>
+        <small>{{book.amount }}</small>
+    </div>
+</div>

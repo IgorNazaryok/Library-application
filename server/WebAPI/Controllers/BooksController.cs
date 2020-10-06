@@ -59,14 +59,14 @@ namespace WebAPI.Controllers
             booksService.Update(bookDTO);
             return Ok();
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("{BookId}")]
         public ActionResult<Book> Delete(int BookId)
         {
             List<int> AuthorsID=booksAuthorService.DeleteBookAuthors(BookId).ToList();
             booksService.Delete(BookId);
             authorService.Delete(AuthorsID);
 
-            return Ok();
+            return Ok(AuthorsID);
         }
     }
 }

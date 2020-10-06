@@ -1,0 +1,22 @@
+    <div class="card">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <h2>{{book.name}}</h2>
+            <p>Autors: {{book.amount}}</p>
+         <div class="form-control">
+             <label for="amount">Total amount: </label>
+             <input id="amount" type="number" formControlName="amount" min="1">
+             <div class="validation">
+                 <small>
+                    <div class="alert alert-danger" *ngIf="bookService.message.Amount[0]"> {{bookService.message.Amount[0]}} </div>
+                 </small>
+             </div>
+         </div>
+
+   <button
+     class="btn btn-primary"
+     type="submit"
+   >Обновить</button>
+ </form>
+    </div>
+
+

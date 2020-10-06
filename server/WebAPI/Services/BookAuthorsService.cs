@@ -23,12 +23,19 @@ namespace WebAPI.Services
         }
         public void AddBookAuthors(int bookId, List<int> authorsId)
         {
-            bookAuthorsRepository.Create(bookId, authorsId);
+
+            foreach (int authorId in authorsId)
+            {
+                BookAuthors bookAuthors = new BookAuthors();
+                bookAuthors.BookId = bookId;
+                bookAuthors.AuthorId = authorId;
+                bookAuthorsRepository.Create(bookAuthors);
+            }
         }
 
-        public IEnumerable<int> DeleteBookAuthors(int idBook) 
+        public IEnumerable<int> DeleteBookAuthors(int BookId) 
         {
-            return bookAuthorsRepository.Delete(idBook);
+            return bookAuthorsRepository.Delete(BookId);
         }
     }
 }

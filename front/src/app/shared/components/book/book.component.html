@@ -1,0 +1,18 @@
+<div class="card">
+    <div>
+        <h2>{{book.name}}</h2>
+        <div class="author">
+            <strong>Authors:</strong>
+                <p>{{book.authors | ListAuthor}}</p>
+        </div>
+    </div>
+    <div  class="card-body">
+    <small>
+        Total/Available amount: {{book.amount}}/{{book.amount-1}}
+    </small>
+    <div   *ngIf="isAutentificated">   
+        <button class="btn btn-dark">Взять</button>
+        <button class="btn btn-primary">Вернуть</button>
+    </div>
+    </div>
+</div>

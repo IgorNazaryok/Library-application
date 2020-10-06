@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Total amount</th>
+            <th>Available amount</th>
+            <th>Readers</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let book of books; let idx=index'>
+           <td>{{idx+1}}</td>
+           <td>{{book.name}}</td>
+           <td>{{book.authors}}</td>
+           <td>{{book.amount}}</td>
+           <td>{{book.amount-1}}</td>
+           <td>Readers</td>                      
+           <td>
+               <button class="btn btn-link open"
+               [routerLink]="['/admin', 'book', book.id, 'edit']"
+               >Edit</button>
+               <a (click)="remove(book.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
