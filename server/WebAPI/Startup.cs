@@ -79,11 +79,13 @@ namespace WebAPI
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IBookAuthorsRepository, BookAuthorsRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBookReadersRepository, BookReadersRepository>();
 
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBookAuthorsService, BookAuthorsService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBookReadersService, BookReadersService>();
         }
 
         

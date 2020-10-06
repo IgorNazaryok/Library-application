@@ -27,6 +27,12 @@ export interface Author {
     fullName:string
 }
 
+export interface BookReader {
+    id?:string
+    bookId:string
+    userId:number
+}
+
 export interface errorMessage {
        Name: Array<string>
        Amount: Array<string>

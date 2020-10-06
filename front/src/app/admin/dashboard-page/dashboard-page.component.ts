@@ -33,7 +33,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
   remove(id:string){
     this.dSub=this.bookService.RemoveBook(id).subscribe(()=>{
-      console.log(id);      
       this.books=this.books.filter(book=>book.id!==id)
     })
   }

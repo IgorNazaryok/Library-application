@@ -18,5 +18,6 @@ namespace Entities.DataAccess
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<BookAuthors> BookAuthors { get; set; }
+        public DbSet<BookReader> BookReaders { get; set; }
     }
 }

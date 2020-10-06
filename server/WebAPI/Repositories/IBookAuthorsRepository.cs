@@ -10,6 +10,7 @@ namespace WebAPI.Repositories
     public interface IBookAuthorsRepository : IRepository<BookAuthors>
     {
         void Create(BookAuthors bookAuthors);
-        IEnumerable<int> Delete(int idBook);
+        IEnumerable<BookAuthors> GetBookAuthorsByBookId(int BookId);
+        void Delete(BookAuthors bookAuthor);
     }
 }

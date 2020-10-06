@@ -26,16 +26,24 @@ namespace WebAPI.Services
 
             foreach (int authorId in authorsId)
             {
-                BookAuthors bookAuthors = new BookAuthors();
-                bookAuthors.BookId = bookId;
-                bookAuthors.AuthorId = authorId;
-                bookAuthorsRepository.Create(bookAuthors);
+                BookAuthors bookAuthor = new BookAuthors();
+                bookAuthor.BookId = bookId;
+                bookAuthor.AuthorId = authorId;
+                bookAuthorsRepository.Create(bookAuthor);
             }
         }
 
         public IEnumerable<int> DeleteBookAuthors(int BookId) 
         {
-            return bookAuthorsRepository.Delete(BookId);
+            IEnumerable<BookAuthors> bookAuthors = bookAuthorsRepository.GetBookAuthorsByBookId(BookId);
+            if (bookAuthors != null)
+            {
+                foreach (BookAuthors bookAuthor in bookAuthors)
+                {
+                    bookAuthorsRepository.Delete(bookAuthor);
+                }
+            }
+           return bookAuthors.Select(u => u.AuthorId);
         }
     }
 }

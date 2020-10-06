@@ -10,9 +10,9 @@
     <small>
         Total/Available amount: {{book.amount}}/{{book.amount-1}}
     </small>
-    <div   *ngIf="isAutentificated">   
-        <button class="btn btn-dark">Взять</button>
-        <button class="btn btn-primary">Вернуть</button>
+    <div  *ngIf="isAutentificated">
+        <a type="button" class="btn btn-dark" (click)="TakeBook(book.id)">Take</a>
+        <a type="button" class="btn btn-primary" (click)="ReturnBook(book.id)">Return</a>
     </div>
     </div>
 </div>

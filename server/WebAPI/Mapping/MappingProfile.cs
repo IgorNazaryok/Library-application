@@ -30,10 +30,6 @@ namespace WebAPI.Mapping
 
             CreateMap<Author, AuthorDTO>();
             CreateMap<AuthorDTO, Author>();
-
-
-
-
         }
     }
 }

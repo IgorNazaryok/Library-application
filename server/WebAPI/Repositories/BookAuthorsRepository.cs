@@ -14,23 +14,20 @@ namespace WebAPI.Repositories
         public BookAuthorsRepository(LibraryDbContext context)
             : base(context)
         { }
-        public void Create(BookAuthors bookAuthors)
+        public void Create(BookAuthors bookAuthor)
         {            
-              _dbContext.BookAuthors.Add(bookAuthors);
+              _dbContext.BookAuthors.Add(bookAuthor);
               _dbContext.SaveChanges();
         }
-        public IEnumerable<int> Delete(int BookId)
+        public IEnumerable<BookAuthors> GetBookAuthorsByBookId(int BookId)
         {
-            var bookAuthors = _dbContext.BookAuthors.Where(x => x.BookId == BookId);
-            if (bookAuthors != null)
-            {
-                foreach (BookAuthors item in bookAuthors)
-                {
-                    _dbContext.BookAuthors.Remove(item);
-                    _dbContext.SaveChanges();
-                }
-            }
-            return bookAuthors.Select(u => u.AuthorId);
+              return _dbContext.BookAuthors.Where(x => x.BookId == BookId).Select(u=>u);
+        }
+        
+        public void Delete(BookAuthors bookAuthor)
+        {
+              _dbContext.BookAuthors.Remove(bookAuthor);
+              _dbContext.SaveChanges();
         }
     }
 }

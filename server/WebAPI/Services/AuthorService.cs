@@ -20,10 +20,10 @@ namespace WebAPI.Services
             this.authorRepository = authorRepository;
             this.mapper = mapper;
         }
-        public List<int> CreateAuthor(List<AuthorDTO> authorDTO)
+        public List<int> CreateAuthor(List<AuthorDTO> authorsDTO)
         {
             List<int> authorsId = new List<int>();
-            foreach (AuthorDTO item in authorDTO) 
+            foreach (var item in authorsDTO) 
             {
                 Author author = mapper.Map<AuthorDTO, Author>(item);
                 authorsId.Add(authorRepository.Create(author));
