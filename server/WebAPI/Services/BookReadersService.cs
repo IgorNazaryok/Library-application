@@ -21,13 +21,13 @@ namespace WebAPI.Services
             this.bookReadersRepository = bookReadersRepository;
             this.mapper = mapper;
         }
-        public void AddBookReader(BookReader bookReader)
+        public BookReader AddBookReader(BookReader bookReader)
         {           
-            bookReadersRepository.Create(bookReader);
+            return bookReadersRepository.Create(bookReader);
         }
-        public void DeleteBookReader(int bookId, int userId) 
+        public BookReader DeleteBookReader(int bookId, int userId) 
         {
-            bookReadersRepository.Delete(bookId, userId);
+            return bookReadersRepository.Delete(bookId, userId);
         }
     }
 }

@@ -1,18 +1,22 @@
-<div class="card">
+<div class="card">    
     <div>
         <h2>{{book.name}}</h2>
-        <div class="author">
-            <strong>Authors:</strong>
-                <p>{{book.authors | ListAuthor}}</p>
-        </div>
+        <p>Authors: {{book.authors | ListAuthor}}</p>
     </div>
     <div  class="card-body">
     <small>
-        Total/Available amount: {{book.amount}}/{{book.amount-1}}
+        Total/Available amount: {{book.amount}}/{{book.amount - book.issued}}
     </small>
     <div  *ngIf="isAutentificated">
-        <a type="button" class="btn btn-dark" (click)="TakeBook(book.id)">Take</a>
-        <a type="button" class="btn btn-primary" (click)="ReturnBook(book.id)">Return</a>
+        <button type="button"
+         class="btn btn-dark"
+         (click)="TakeBook(book.id)"
+         [disabled]="!isAvailableBook(book)"
+         >Take</button>
+        <button type="button"
+        class="btn btn-primary"
+        (click)="ReturnBook(book.id)"
+        >Return</button>
     </div>
     </div>
 </div>

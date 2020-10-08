@@ -14,6 +14,7 @@ export class CreatePageComponent implements OnInit {
   authorsBook:Array<Author>=[]
   authorNewBook:Author
 
+
   constructor(
     public bookService:BookService,
   ) { }
@@ -38,12 +39,13 @@ export class CreatePageComponent implements OnInit {
     })    
   }
   addAuthor(){
-    if(this.form.value.authors)
-    var newAuthor= this.form.value.authors.toString().trim()
-    const authorBook:Author={
-      fullName:newAuthor
+    if(this.form.value.authors){
+         var newAuthor= this.form.value.authors.toString().trim()
+         const authorBook:Author={
+          fullName:newAuthor
+          }
+      this.authorsBook.push(authorBook) 
+      this.form.value.authors = null 
     }
-    this.authorsBook.push(authorBook) 
-    this.form.value.authors = null
   }
 }

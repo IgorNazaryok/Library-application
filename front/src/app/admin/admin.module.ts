@@ -10,7 +10,8 @@ import { EditPageComponent } from './edit-page/edit-page.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthGuard} from './shared/service/auth.guard'
 import {ShareModule} from '../shared/shared.module'
-import {UserService} from './shared/service/user.service'
+import {ListRedersPipe} from './shared/listRedersPipe'
+import {AuthorPipe} from './shared/authorPipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import {UserService} from './shared/service/user.service'
     LoginPageComponent,
     DashboardPageComponent,
     CreatePageComponent,
-    EditPageComponent
+    EditPageComponent,
+    ListRedersPipe,
+    AuthorPipe
   ],
   imports: [
     CommonModule,
@@ -39,6 +42,6 @@ import {UserService} from './shared/service/user.service'
   exports:[
     RouterModule
   ],
-  providers: [AuthGuard, UserService]
+  providers: [AuthGuard]
 })
 export class AdminModule { }

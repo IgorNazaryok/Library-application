@@ -20,7 +20,9 @@ namespace WebAPI.Repositories
         {
             return _dbContext.Books
                 .Include(n => n.BookAuthor)
-                    .ThenInclude(n => n.Author)
+                   .ThenInclude(n => n.Author)
+                .Include(n => n.BookReader)
+                   .ThenInclude(n => n.User)
                     .ToList();
         }
         public Book GetBookById(int id)
@@ -28,6 +30,8 @@ namespace WebAPI.Repositories
             return _dbContext.Books
                 .Include(n => n.BookAuthor)
                     .ThenInclude(n => n.Author)
+                .Include(n => n.BookReader)
+                   .ThenInclude(n => n.User)
                     .Where(x => x.Id == id)
                     .First();
         }

@@ -47,29 +47,28 @@ namespace WebAPI.Services
                     issuer: AuthOptions.ISSUER,
                     audience: AuthOptions.AUDIENCE,
                     notBefore: now,
-                   // claims: identity.Claims,
                     expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
                     signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
             var token = new JwtSecurityTokenHandler().WriteToken(jwt);
             return new AuthenticateResponse(user, token);
         }
-        private ClaimsIdentity GetIdentity(string email, string password)
-        {
-            UserDTO user = GetUsers().FirstOrDefault(x => x.Email == email && x.Password == password);
+        //private ClaimsIdentity GetIdentity(string email, string password)
+        //{
+        //    UserDTO user = GetUsers().FirstOrDefault(x => x.Email == email && x.Password == password);
 
-            if (user != null)
-            {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role)
-                };
-                ClaimsIdentity claimsIdentity =
-                new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
-                    ClaimsIdentity.DefaultRoleClaimType);
-                return claimsIdentity;
-            }
-            return null;
-        }
+        //    if (user != null)
+        //    {
+        //        var claims = new List<Claim>
+        //        {
+        //            new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
+        //            new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role)
+        //        };
+        //        ClaimsIdentity claimsIdentity =
+        //        new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
+        //            ClaimsIdentity.DefaultRoleClaimType);
+        //        return claimsIdentity;
+        //    }
+        //    return null;
+       // }
     }
 }

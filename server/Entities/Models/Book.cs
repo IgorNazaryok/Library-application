@@ -14,6 +14,7 @@ namespace Entities.Models
         [Range(1, 100, ErrorMessage = "The amount must be greater than zero")]
         public int Amount { get; set; }
         [Required]
-        public ICollection<BookAuthors> BookAuthor { get; set; }
+        public  ICollection<BookAuthors> BookAuthor { get; set; }        
+        public  ICollection<BookReader> BookReader { get; set; }
     }
 }

@@ -6,7 +6,7 @@
             <input id="name" type="text" formControlName="name">
             <div class="validation">
                 <small>
-                    <div class="alert alert-danger" *ngIf="bookService.message.Name[0]"> The field cannot be empty </div>
+                    <div class="alert alert-danger" *ngIf="bookService.message.Name"> The field cannot be empty </div>
                 </small>
             </div>
         </div>
@@ -18,11 +18,11 @@
                 <a type="button" class="btn btn-primary" (click)="addAuthor()">Add</a>
             </div>
             <div *ngFor="let author of authorsBook">               
-                <p>{{author}}</p>
+                <p>{{author.fullName}}</p>
             </div>
             <div class="validation">
                 <small>
-                    <!-- <div class="alert alert-danger" *ngIf="bookService.message.Author[0]"> {{bookService.message.Author[0]}} </div> -->
+                    <div class="alert alert-danger" *ngIf="bookService.message.Authors"> {{bookService.message.Authors}} </div>
                 </small>
             </div>
         </div>    
@@ -32,7 +32,7 @@
             <input id="amount" type="number" formControlName="amount" min="1">
             <div class="validation">
                 <small>
-                    <div class="alert alert-danger" *ngIf="bookService.message.Amount[0]"> {{bookService.message.Amount[0]}} </div>
+                    <div class="alert alert-danger" *ngIf="bookService.message.Amount"> {{bookService.message.Amount}} </div>
                 </small>
             </div>
         </div>

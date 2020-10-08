@@ -9,12 +9,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { BookPageComponent } from './book-page/book-page.component';
 import { AdminModule } from './admin/admin.module';
 import { BookComponent } from './shared/components/book/book.component'
 import {ShareModule} from './shared/shared.module'
 import {AuthInterceptor} from './shared/auth.interceptor';
 import {ListAuthorPipe} from './shared/listAutor.pipe'
+
 
 
 registerLocaleData(ruLocale, 'ru')
@@ -30,9 +30,9 @@ const INTERCEPTOR_PROVIDER: Provider = {
     AppComponent,
     MainLayoutComponent,
     HomePageComponent,
-    BookPageComponent,
     BookComponent,
     ListAuthorPipe
+ 
   ],
   imports: [
     BrowserModule,

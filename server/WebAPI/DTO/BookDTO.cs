@@ -14,7 +14,8 @@ namespace WebAPI.DTO
         [Required]
         [Range(1, 100, ErrorMessage = "The value must be greater than zero")]
         public int Amount { get; set; }
-
+        [Required]
         public List<AuthorDTO> Authors { get; set; }
+        public List<ReaderDTO> Readers { get; set; }
     }
 }

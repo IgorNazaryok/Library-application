@@ -1,16 +1,15 @@
 <nav class="navbar bg-primary">
-<h1>
-    <a routerLink="/">Admin panel</a>
-</h1>
-<ul *ngIf="authService.isAutentificated()">
+<h1> Admin panel</h1>
+
+<ul *ngIf="authService.isAutentificated() && authService.isRoleAdmin()">
     <li>
-        <a [routerLink]="['/admin','dashboard']">Главная</a>
+        <a routerLink="/">Home page</a>
     </li>
     <li>
-        <a [routerLink]="['/admin','create']">Создать</a>
+        <a [routerLink]="['/admin','dashboard']">Dashboard</a>
     </li>
     <li>
-        <a href="#" (click)="logout($event)">Выход</a>
+        <a [routerLink]="['/admin','create']">Add Book</a>
     </li>
 </ul>
 </nav>

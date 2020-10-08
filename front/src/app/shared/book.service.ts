@@ -8,12 +8,13 @@ import { tap, catchError  } from 'rxjs/operators'
 export class BookService {
 
    public message:errorMessage = {
-    Name: [],
-    Amount: [],
-    Authors: []
+    Name: '',
+    Amount: '',
+    Authors: ''
    }
 
    public takeReturnBookError: string
+   public updateBookError: string
 
    Url:string=`https://localhost:5001/books`
    UrlBookReaders:string=`https://localhost:5001/bookReaders`
@@ -51,10 +52,18 @@ export class BookService {
 
     UpdateBook(book:Book):Observable<any>
     {
-        return this.httpClient.put(this.Url,book)
-        .pipe(            
-          catchError(this.CreateBookError.bind(this)) 
-        )
+        if(book.amount<book.issued)
+        {
+            this.updateBookError='The total amount cannot be less than the issued!'
+        }
+        else 
+        {
+            return this.httpClient.put(this.Url,book)
+            .pipe(            
+              catchError(this.CreateBookError.bind(this)) 
+            )
+        }
+ 
     }
 
     TakeBook(bookReader:BookReader):Observable<any>
@@ -75,21 +84,35 @@ export class BookService {
 
 
     private CreateBookError (err: HttpErrorResponse) {
-        this.message= err.error.errors        
+        
+        this.message.Name=''
+        this.message.Amount=''
+
+            if(err.error.errors.hasOwnProperty('Name'))   
+                this.message.Name= err.error.errors.Name[0] 
+            if(err.error.errors.hasOwnProperty('Amount'))
+                this.message.Amount= err.error.errors.Amount[0]
+        
+
          return throwError(err)        
     }
 
     private TakeReturnBookError (err: HttpErrorResponse) {
-        this.takeReturnBookError= err.error.errors
-        console.log('Error!!!! ',err.error.errors);        
+        this.takeReturnBookError= err.error.message      
          return throwError(err)        
     }
 
     private getBooks(res:Book[]):Book[]{
-        return res
+
+        return res.map((book)=>
+        {
+            book.issued = book.readers.length            
+            return book       
+        })
     }
 
-    private getBook(res:Book):Book{
-        return res        
+    private getBook(book:Book):Book{
+        book.issued = book.readers.length
+        return book        
     }
 }

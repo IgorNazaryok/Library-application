@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace WebAPI.DTO
 {
-    public class AuthorDTO
+    public class ReaderDTO
     {
         public int Id { get; set; }
         [Required]
-        public string FullName { get; set; }
+        public string Loggin { get; set; }
     }
 }

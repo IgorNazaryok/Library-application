@@ -22,6 +22,15 @@ namespace WebAPI.Mapping
                             FullName = el.Author.FullName
                         })
                     )
+                )
+                .ForMember(dto => dto.Readers, opt => 
+                opt.MapFrom(route => route.BookReader.ToList().Select(
+                        el => new ReaderDTO
+                        {
+                            Id = el.User.Id,
+                            Loggin = el.User.Email
+                        })
+                    )
                 );
             CreateMap<BookDTO, Book>();
 

@@ -9,7 +9,7 @@ namespace WebAPI.Repositories
 {
     public interface IBookReadersRepository : IRepository<BookReader>
     {
-        void Create(BookReader bookReaders);
-        void Delete(int bookId, int userId);
+        BookReader Create(BookReader bookReaders);
+        BookReader Delete(int bookId, int userId);
     }
 }

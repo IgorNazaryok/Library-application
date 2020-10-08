@@ -1,24 +1,25 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-    <h2>Войти в панель администратора</h2>
-
-    <div class="alert alert-danger" *ngIf="auth.error$ | async as error"> {{error}} </div>
+    <h2>Sing in</h2>
+    <small>
+        <div class="alert alert-danger" *ngIf="auth.authErrorMessage.ErrorMessage"> Username or password is incorrect </div>    
+    </small>
     <div class="form-control">
         <label for="email">Email:</label>
         <input id="email" type="email" formControlName="email">
         <div class="validation">
             <small>
-            email
+                <div class="alert alert-danger" *ngIf="auth.authErrorMessage.Email"> The field cannot be empty </div>
             </small>
         </div>
     </div>
     <div class="form-control">
-        <label for="password">Пароль:</label>
+        <label for="password">Password:</label>
         <input id="password" type="password" formControlName="password">
         <div class="validation">
             <small>
-            password
+                <div class="alert alert-danger" *ngIf="auth.authErrorMessage.Password"> The field cannot be empty </div>
             </small>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Ввойти</button>
+    <button type="submit" class="btn btn-primary">Sing in</button>
 </form>

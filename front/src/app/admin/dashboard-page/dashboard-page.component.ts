@@ -13,12 +13,13 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   books:Book[] = []
   pSub:Subscription
   dSub:Subscription
-  searchStr=''
+
   constructor(private bookService:BookService) { }
 
   ngOnInit(): void {
    this.pSub=this.bookService.GetBooks().subscribe(data=>{
       this.books=data
+      
     })
   }
 

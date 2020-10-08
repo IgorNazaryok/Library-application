@@ -14,12 +14,10 @@
         <tr *ngFor='let book of books; let idx=index'>
            <td>{{idx+1}}</td>
            <td>{{book.name}}</td>
-           <div *ngFor="let author of book.authors">
-            <td>{{author.fullName}}</td>
-           </div>
+            <td>{{book.authors | Author}}</td>
            <td>{{book.amount}}</td>
-           <td>{{book.amount-1}}</td>
-           <td>Readers</td>                      
+           <td>{{book.amount-book.issued}}</td>
+           <td>{{book.readers | ListReders }}</td>
            <td>
                <button class="btn btn-link open"
                [routerLink]="['/admin', 'book', book.id, 'edit']"

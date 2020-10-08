@@ -1,10 +1,10 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import { Author } from './interface';
+import { Author } from '../../shared/interface';
 
 @Pipe({
-  name: 'ListAuthor'
+  name: 'Author'
 })
-export class ListAuthorPipe implements PipeTransform {
+export class AuthorPipe implements PipeTransform {
   transform(authors: Author[]): string {
     return authors.map(x=>x.fullName).join(', ')
   }

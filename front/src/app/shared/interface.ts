@@ -19,12 +19,19 @@ export interface Book {
     id?:string
     name:string
     amount:number
+    issued?:number
     authors:Array<Author>
+    readers?:Array<Reader>
 }
 
 export interface Author {
     id?:string
     fullName:string
+}
+
+export interface Reader {
+    id?:string
+    loggin:string
 }
 
 export interface BookReader {
@@ -34,7 +41,14 @@ export interface BookReader {
 }
 
 export interface errorMessage {
-       Name: Array<string>
-       Amount: Array<string>
-       Authors?:  Array<string>
+       Name: string
+       Amount: string
+       Authors?: string
 }
+
+export interface authErrorMessage {
+    Email?: string
+    Password?: string
+    ErrorMessage?:string
+}
+

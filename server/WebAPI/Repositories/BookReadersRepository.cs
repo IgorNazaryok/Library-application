@@ -14,12 +14,17 @@ namespace WebAPI.Repositories
         public BookReadersRepository(LibraryDbContext context)
             : base(context)
         { }
-        public void Create(BookReader bookReader)
-        {            
-              _dbContext.BookReaders.Add(bookReader);
-              _dbContext.SaveChanges();
+        public BookReader Create(BookReader newBookReader)
+        {
+            BookReader bookReader = _dbContext.BookReaders.FirstOrDefault(x => x.BookId == newBookReader.BookId && x.UserId == newBookReader.UserId);
+            if (bookReader == null)
+            {
+                _dbContext.BookReaders.Add(newBookReader);
+                _dbContext.SaveChanges();
+            }
+            return bookReader;
         }        
-        public void Delete(int bookId, int userId)
+        public BookReader Delete(int bookId, int userId)
         {
             BookReader bookReader = _dbContext.BookReaders.FirstOrDefault(x => x.BookId == bookId && x.UserId == userId);
             if (bookReader != null)
@@ -27,6 +32,7 @@ namespace WebAPI.Repositories
                 _dbContext.BookReaders.Remove(bookReader);
                 _dbContext.SaveChanges();
             }
+            return bookReader;
         }
     }
 }

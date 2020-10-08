@@ -14,7 +14,13 @@ import { BookService } from 'src/app/shared/book.service';
 export class EditPageComponent implements OnInit, OnDestroy {
 
   form: FormGroup
-  book: Book
+  book: Book = {
+    name:'',
+    amount:0,
+    issued:0,
+    authors:[],
+    readers:[]
+  }
   uSub:Subscription
 
   constructor(
@@ -44,6 +50,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
         amount: new FormControl(book.amount)
       })
     })
+    
   }
 
   submit() {

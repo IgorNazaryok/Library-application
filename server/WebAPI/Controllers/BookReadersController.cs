@@ -28,29 +28,23 @@ namespace WebAPI.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
-        //public ActionResult GetAllBookReaders()
-        //{
-        //    List<BookDTO> objectList = booksReadersService.GetBookReaders();
-        //    return Ok(objectList);
-        //}        
-        //[HttpGet("{id}")]
-        //public ActionResult GetBookReadersById(int id)
-        //{
-        //    BookDTO objectList = booksReadersService.GetBookById(id);
-        //    return Ok(objectList);
-        //}
         [HttpPost]
         public ActionResult<BookReader> Post(BookReader booksReader)
         {
-            booksReadersService.AddBookReader(booksReader);
+            var response = booksReadersService.AddBookReader(booksReader);
+            if (response != null)
+                return BadRequest(new { message = "You have already take one copy of the book!" });
+
             return Ok();
         }
 
         [HttpDelete("{bookId}/{userId}")]
         public ActionResult<BookReader> Delete(int bookId, int userId)
         {
-            booksReadersService.DeleteBookReader(bookId, userId);
+            var response = booksReadersService.DeleteBookReader(bookId, userId);
+            if (response == null)
+                return BadRequest(new { message = "You can only return a take book!" });
+
             return Ok();
         }
     }

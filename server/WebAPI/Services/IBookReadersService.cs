@@ -9,7 +9,7 @@ namespace WebAPI.Services
 {
     public interface IBookReadersService
     {
-        void AddBookReader(BookReader bookReader);      
-        void DeleteBookReader(int bookId, int userId);
+        BookReader AddBookReader(BookReader bookReader);
+        BookReader DeleteBookReader(int bookId, int userId);
     }
 }

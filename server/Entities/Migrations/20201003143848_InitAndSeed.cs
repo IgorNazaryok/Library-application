@@ -73,20 +73,30 @@ namespace Entities.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookAuthors_AuthorId",
+                table: "BookAuthors",
+                column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookAuthors_BookId",
+                table: "BookAuthors",
+                column: "BookId");
             migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Name", "Amount" },
-                values: new object[,]
-                {
+    table: "Books",
+    columns: new[] { "Name", "Amount" },
+    values: new object[,]
+    {
 
                     {"Head First Object-Oriented Analysis and Design", 6 },
                     {"Object-Oriented Thought Process, The (Developer's Library)", 2 },
                     {"Object Design Style Guide 1st Edition",  4 },
                     {"The API Economy: Disruption and the Business of APIs", 3 },
-                    {"Practices of the Python Pro", 1 },
+                    {"Practices of the Python Pro", 3 },
                     {"Test-Driven Development with Python: Obey the Testing Goat: Using Django, Selenium, and JavaScript", 5 },
 
-                });
+    });
             migrationBuilder.InsertData(
                 table: "Authors",
                 columns: new[] { "FullName" },
@@ -132,23 +142,11 @@ namespace Entities.Migrations
                 columns: new[] { "Email", "Password", "Role" },
                 values: new object[,]
                 {
-
-                    {"Gary@gmail.com", "12345", "admin"},
-                    {"Alex@gmail.com", "12345", "user"},
-                    {"Matt@gmail.com", "12345", "user"},
-
-
+                     {"Garik@gmail.com", "12345", "admin"},
+                     {"Alex@gmail.com", "12345", "user"},
+                     {"Matt@gmail.com", "12345", "user"},
+                     {"Gary@gmail.com", "12345", "user"},
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BookAuthors_AuthorId",
-                table: "BookAuthors",
-                column: "AuthorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BookAuthors_BookId",
-                table: "BookAuthors",
-                column: "BookId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

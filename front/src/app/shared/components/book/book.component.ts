@@ -16,7 +16,7 @@ export class BookComponent implements OnInit {
 
   ) { }
 
-  ngOnInit(): void {        
+  ngOnInit(): void {
   }
 
   TakeBook(bookId:string){
@@ -24,14 +24,20 @@ export class BookComponent implements OnInit {
       bookId: bookId,
       userId: +localStorage.getItem('id')
     }
-    this.bookService.TakeBook(bookReader).subscribe(()=>{ 
-    console.log('Take', bookReader)})
+    this.bookService.TakeBook(bookReader).subscribe(()=>{
+    this.book.issued++
+    })
   }
+
+  isAvailableBook(book:Book){    
+    return +book.issued < +book.amount
+  }
+
+  
   ReturnBook(bookId:string){    
     this.bookService.ReturnBook(bookId.toString(), localStorage.getItem('id')).subscribe(()=>{
-      console.log('Return', bookId, localStorage.getItem('id'));
-    })
-    
+      this.book.issued--
+    })    
   }
 
 }

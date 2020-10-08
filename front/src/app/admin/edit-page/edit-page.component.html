@@ -1,13 +1,14 @@
     <div class="card">
+        <h2>{{book.name}}</h2>
+        <p>Autors: {{book.authors | Author}}</p>  
         <form [formGroup]="form" (ngSubmit)="submit()">
-            <h2>{{book.name}}</h2>
-            <p>Autors: {{book.amount}}</p>
+          
          <div class="form-control">
              <label for="amount">Total amount: </label>
-             <input id="amount" type="number" formControlName="amount" min="1">
+             <input id="amount" type="number" formControlName="amount" min=`book.issued`>
              <div class="validation">
                  <small>
-                    <div class="alert alert-danger" *ngIf="bookService.message.Amount[0]"> {{bookService.message.Amount[0]}} </div>
+                    <div class="alert alert-danger" *ngIf="bookService.updateBookError"> {{bookService.updateBookError}} </div>
                  </small>
              </div>
          </div>

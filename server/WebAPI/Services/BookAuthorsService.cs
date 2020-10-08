@@ -35,7 +35,7 @@ namespace WebAPI.Services
 
         public IEnumerable<int> DeleteBookAuthors(int BookId) 
         {
-            IEnumerable<BookAuthors> bookAuthors = bookAuthorsRepository.GetBookAuthorsByBookId(BookId);
+            List<BookAuthors> bookAuthors = bookAuthorsRepository.GetBookAuthorsByBookId(BookId).ToList();
             if (bookAuthors != null)
             {
                 foreach (BookAuthors bookAuthor in bookAuthors)
