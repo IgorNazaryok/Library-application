@@ -8,7 +8,8 @@ const routes: Routes = [
   {path:'', component: MainLayoutComponent, 
   children:[
       {path:'', redirectTo: '/', pathMatch:'full'},
-      {path:'', component: HomePageComponent}
+      {path:'', component: HomePageComponent},
+      {path:'refresh=1', component: HomePageComponent},
     ]
   },
   {path:'admin',  loadChildren: './admin/admin.module#AdminModule'}

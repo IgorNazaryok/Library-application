@@ -22,13 +22,22 @@ export class AuthService{
 
     get role(): string {
         return localStorage.getItem('role')
-        }
+    }
 
     Login(model:AuthRequest):Observable<any>
     {
        return this.httpClient.post(`https://localhost:5001/users/authenticate`,model)
         .pipe(
            tap(this.setToken),
+           catchError(this.CreateAuthError.bind(this)) 
+        )
+    }
+
+    
+    Registration(model:AuthRequest):Observable<any>
+    {
+       return this.httpClient.post(`https://localhost:5001/users`,model)
+        .pipe(           
            catchError(this.CreateAuthError.bind(this)) 
         )
     }
@@ -55,12 +64,15 @@ export class AuthService{
             if(err.error.errors.hasOwnProperty('Email'))
                 this.authErrorMessage.Email= err.error.errors.Email[0]
         }         
-         return throwError(err)
-        
+         return throwError(err)        
+    }   
+
+    
+    ClearAuthError () { 
+        this.authErrorMessage={}        
     }
 
     private setToken(response:AuthRespons|null){  
-        console.log(response);
               
       if(response){
         localStorage.setItem('id', response.id.toString())

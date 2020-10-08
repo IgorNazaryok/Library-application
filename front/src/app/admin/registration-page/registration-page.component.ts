@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  selector: 'app-registration-page',
+  templateUrl: './registration-page.component.html',
+  styleUrls: ['./registration-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class RegistrationPageComponent implements OnInit {
   form:FormGroup
 
 
@@ -33,19 +33,10 @@ export class LoginPageComponent implements OnInit {
       Email: this.form.value.email,
       Password: this.form.value.password
     }
-    this.auth.Login(model).subscribe(()=>{
+    this.auth.Registration(model).subscribe(()=>{
       this.form.reset
-      if(this.auth.isRoleAdmin())
-      {
-        this.router.navigate(['/admin', 'dashboard'])
-        console.log(this.auth.isRoleAdmin());
-        
-      }
-      else{
-        this.router.navigate(['/'])
-        console.log(this.auth.isRoleAdmin());
-      }
-
+      this.auth.ClearAuthError()
+      this.router.navigate(['/admin', 'login'])
     })
   }
 

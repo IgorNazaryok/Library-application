@@ -23,7 +23,12 @@ namespace WebAPI.Repositories
         {
               return _dbContext.BookAuthors.Where(x => x.BookId == BookId).Select(u=>u);
         }
-        
+
+        public BookAuthors GetBookAutorByAuthorId(int AuthorId)
+        {
+            return _dbContext.BookAuthors.Where(x => x.AuthorId == AuthorId).First();
+        }
+
         public void Delete(BookAuthors bookAuthor)
         {
               _dbContext.BookAuthors.Remove(bookAuthor);

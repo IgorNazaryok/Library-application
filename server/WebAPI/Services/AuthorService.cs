@@ -26,7 +26,10 @@ namespace WebAPI.Services
             foreach (var item in authorsDTO) 
             {
                 Author author = mapper.Map<AuthorDTO, Author>(item);
-                authorsId.Add(authorRepository.Create(author));
+                if (authorRepository.Create(author)!=null) 
+                {
+                    authorsId.Add(authorRepository.Create(author).Id);
+                }
             }
             return authorsId;
         }
@@ -36,7 +39,6 @@ namespace WebAPI.Services
             {
                 authorRepository.Delete(id);
             }
-
         }
     }
 }

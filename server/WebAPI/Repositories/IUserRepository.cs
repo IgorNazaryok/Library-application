@@ -11,6 +11,6 @@ namespace WebAPI.Repositories
     public interface IUserRepository : IRepository<UserDTO>
     {
         IEnumerable<User> GetAllUsers();
-        void Create(User user);
+        User Create(User user);
     }
 }

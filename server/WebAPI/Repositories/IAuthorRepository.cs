@@ -9,7 +9,7 @@ namespace WebAPI.Repositories
 {
     public interface IAuthorRepository : IRepository<AuthorDTO>
     {
-        int Create(Author author);
+        Author Create(Author author);
         void Delete(int BookId);
     }
 }

@@ -30,6 +30,7 @@ a {
   &:hover {
     color: #666;
   }
+  
 }
 
 ul {
@@ -38,6 +39,11 @@ ul {
 
 img {
   width: 100%;
+}
+
+.group-auth-btn{
+  display: flex;
+  justify-content: space-between;
 }
 
 .container {

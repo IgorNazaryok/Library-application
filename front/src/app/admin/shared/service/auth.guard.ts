@@ -17,7 +17,7 @@ constructor(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
       ): Observable<boolean> | Promise<boolean> | boolean {
-              if (this.auth.isAutentificated()) {
+              if (this.auth.isAutentificated() && this.auth.isRoleAdmin()) {
                 return true
               }
               else {

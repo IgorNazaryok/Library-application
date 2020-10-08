@@ -38,14 +38,11 @@ namespace WebAPI.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult<User> Post(UserDTO user)
+        public ActionResult<UserDTO> Post(UserDTO userDTO)
         {
-            if (user == null)
-            {
-                return BadRequest();
-            }
-
-            userService.CreateUser(user);
+            var response = userService.CreateUser(userDTO);
+            if (response != null)
+                return BadRequest(new { message = $"User with email {userDTO.Email} is already registered!!" });
             return Ok();
         }
         

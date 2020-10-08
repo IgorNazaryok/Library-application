@@ -10,7 +10,7 @@ namespace WebAPI.Services
     public interface IUserService
     {
         IEnumerable<UserDTO> GetUsers();
-        void CreateUser(UserDTO userDTO);
+        UserDTO CreateUser(UserDTO userDTO);
         AuthenticateResponse Authenticate(AuthenticateRequest model);
     }
 }

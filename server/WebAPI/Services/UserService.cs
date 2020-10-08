@@ -30,10 +30,11 @@ namespace WebAPI.Services
             var users = userRepository.GetAllUsers();
             return mapper.Map<IEnumerable<UserDTO>>(users.ToList());
         }
-        public void CreateUser(UserDTO userDTO)
+        public UserDTO CreateUser(UserDTO userDTO)
         {
             User user = mapper.Map<UserDTO, User>(userDTO);
-            userRepository.Create(user);
+            user = userRepository.Create(user);
+            return mapper.Map<User, UserDTO>(user);
         }
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
@@ -52,23 +53,5 @@ namespace WebAPI.Services
             var token = new JwtSecurityTokenHandler().WriteToken(jwt);
             return new AuthenticateResponse(user, token);
         }
-        //private ClaimsIdentity GetIdentity(string email, string password)
-        //{
-        //    UserDTO user = GetUsers().FirstOrDefault(x => x.Email == email && x.Password == password);
-
-        //    if (user != null)
-        //    {
-        //        var claims = new List<Claim>
-        //        {
-        //            new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-        //            new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role)
-        //        };
-        //        ClaimsIdentity claimsIdentity =
-        //        new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
-        //            ClaimsIdentity.DefaultRoleClaimType);
-        //        return claimsIdentity;
-        //    }
-        //    return null;
-       // }
     }
 }

@@ -1,17 +1,28 @@
 <nav class="navbar bg-primary">
 <h1> Admin panel</h1>
-
-<ul *ngIf="authService.isAutentificated() && authService.isRoleAdmin()">
-    <li>
-        <a routerLink="/">Home page</a>
-    </li>
-    <li>
-        <a [routerLink]="['/admin','dashboard']">Dashboard</a>
-    </li>
-    <li>
-        <a [routerLink]="['/admin','create']">Add Book</a>
-    </li>
-</ul>
+<div>
+    <ul *ngIf="authService.isAutentificated() && authService.isRoleAdmin(); else HomeP">
+        <li>
+            <a [routerLink]="['/admin','dashboard']">Dashboard</a>
+        </li>
+        <li>
+            <a [routerLink]="['/admin','create']">Add Book</a>
+        </li>
+        <li>
+            <a routerLink="/">Home page</a>
+        </li>
+        <li>
+            <strong>
+                <a href="#" (click)="logout($event)">Sing out</a>         
+            </strong>
+        </li>
+    </ul>
+    <ng-template #HomeP>
+        <strong>
+            <a routerLink="/">Home page</a>         
+        </strong>
+    </ng-template>
+</div>
 </nav>
 <div class="container">
     <router-outlet></router-outlet>

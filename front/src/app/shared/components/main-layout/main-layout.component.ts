@@ -20,6 +20,9 @@ export class MainLayoutComponent implements OnInit {
   logout(event:Event){
     event.preventDefault()
     this.authService.logout()
+    this.router.navigate(['refresh=1'])
+    console.log('logout');
+    
   }
 
 }

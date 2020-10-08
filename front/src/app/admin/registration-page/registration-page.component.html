@@ -1,5 +1,5 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-    <h2>Sing in</h2>
+    <h2>Registration</h2>
     <small>
         <div class="alert alert-danger" *ngIf="auth.authErrorMessage.ErrorMessage"> {{auth.authErrorMessage.ErrorMessage}} </div>    
     </small>
@@ -22,11 +22,10 @@
         </div>
     </div>
     <div class="group-auth-btn">
-        <button type="submit" class="btn btn-primary">Sing in</button>
+        <button type="submit" class="btn btn-primary">Registration</button>
         <button class="btn btn-link open"
         (click)="this.auth.ClearAuthError()"
-        [routerLink]="['/admin','registration']"
-        >Registration</button>
+        [routerLink]="['/admin','login']"
+        >Sing in</button>
     </div>
-
 </form>

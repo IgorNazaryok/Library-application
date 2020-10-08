@@ -24,14 +24,16 @@ namespace WebAPI.Repositories
             return _dbContext.Users;
         }
 
-        public void Create(User value)
+        public User Create(User newUser)
         {
-            User user = _dbContext.Users.FirstOrDefault(x => x.Email == value.Email);
+            User user = _dbContext.Users.FirstOrDefault(x => x.Email == newUser.Email);
             if (user == null)
             {
-                _dbContext.Users.Add(value);
+                newUser.Role = "user";
+                _dbContext.Users.Add(newUser);
                 _dbContext.SaveChanges();
             }
+            return user;
         }       
     }
 }

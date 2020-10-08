@@ -5,7 +5,7 @@
           
          <div class="form-control">
              <label for="amount">Total amount: </label>
-             <input id="amount" type="number" formControlName="amount" min=`book.issued`>
+             <input id="amount" type="number" formControlName="amount" min="1">
              <div class="validation">
                  <small>
                     <div class="alert alert-danger" *ngIf="bookService.updateBookError"> {{bookService.updateBookError}} </div>
@@ -16,7 +16,7 @@
    <button
      class="btn btn-primary"
      type="submit"
-   >Обновить</button>
+   >Update</button>
  </form>
     </div>
 

@@ -49,8 +49,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
       this.form = new FormGroup({  
         amount: new FormControl(book.amount)
       })
-    })
-    
+    })    
   }
 
   submit() {

@@ -11,6 +11,7 @@ namespace WebAPI.Repositories
     {
         void Create(BookAuthors bookAuthors);
         IEnumerable<BookAuthors> GetBookAuthorsByBookId(int BookId);
+        BookAuthors GetBookAutorByAuthorId(int AuthorId);
         void Delete(BookAuthors bookAuthor);
     }
 }
