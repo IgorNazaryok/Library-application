@@ -15,7 +15,7 @@ using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
 

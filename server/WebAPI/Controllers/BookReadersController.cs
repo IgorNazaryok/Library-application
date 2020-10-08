@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers
 {
-    //[Readersize]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
 
@@ -26,8 +26,7 @@ namespace WebAPI.Controllers
         {
             this.booksReadersService = booksReadersService;
         }
-
-        [AllowAnonymous]
+      
         [HttpPost]
         public ActionResult<BookReader> Post(BookReader booksReader)
         {
