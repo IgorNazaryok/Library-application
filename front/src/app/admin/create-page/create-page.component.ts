@@ -34,7 +34,6 @@ export class CreatePageComponent implements OnInit {
     }
     this.bookService.CreateBook(book)
     .subscribe(()=>{
-      alert("Book added!")
       this.authorsBook.length=0
       this.bookService.message.Name=''
       this.bookService.message.Amount=''

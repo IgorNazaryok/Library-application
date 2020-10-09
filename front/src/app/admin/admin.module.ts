@@ -13,6 +13,7 @@ import {AuthGuard} from './shared/service/auth.guard'
 import {ShareModule} from '../shared/shared.module'
 import {ListRedersPipe} from './shared/listRedersPipe'
 import {AuthorPipe} from './shared/authorPipe';
+import {AlertAdminComponent} from './shared/components/alert-admin/alert-admin.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AuthorPipe} from './shared/authorPipe';
     CreatePageComponent,
     EditPageComponent,
     ListRedersPipe,
-    AuthorPipe
+    AuthorPipe,
+    AlertAdminComponent
   ],
   imports: [
     CommonModule,

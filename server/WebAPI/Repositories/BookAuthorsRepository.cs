@@ -26,7 +26,8 @@ namespace WebAPI.Repositories
 
         public BookAuthors GetBookAutorByAuthorId(int AuthorId)
         {
-            return _dbContext.BookAuthors.Where(x => x.AuthorId == AuthorId).First();
+            return _dbContext.BookAuthors.FirstOrDefault(x => x.AuthorId == AuthorId);
+              //  Where(x => x.AuthorId == AuthorId).First();
         }
 
         public void Delete(BookAuthors bookAuthor)

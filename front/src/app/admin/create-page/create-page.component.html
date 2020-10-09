@@ -15,7 +15,7 @@
             <label for="author">Authors:</label>            
             <div class="author">
                 <input id="author" type="text" formControlName="authors">
-                <a type="button" class="btn btn-primary" (click)="addAuthor()">Add</a>
+                <a type="button" class="btn btn-dark" (click)="addAuthor()">Add</a>
             </div>
             <div *ngFor="let author of authorsBook">               
                 <p>{{author.fullName}}</p>
@@ -36,7 +36,7 @@
                 </small>
             </div>
         </div>
-        <button type="submit" class="btn btn-block btn-dark">Add book</button>
+        <button type="submit" class="btn btn-block btn-primary">Add book</button>
     </form>
 </div>
    

@@ -10,14 +10,12 @@ import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdminModule } from './admin/admin.module';
-import { BookComponent } from './shared/components/book/book.component'
-import {ShareModule} from './shared/shared.module'
+import { BookComponent } from './shared/components/book/book.component';
+import {ShareModule} from './shared/shared.module';
 import {AuthInterceptor} from './shared/auth.interceptor';
-import {ListAuthorPipe} from './shared/listAutor.pipe'
-
-
-
-registerLocaleData(ruLocale, 'ru')
+import {ListAuthorPipe} from './shared/listAutor.pipe';
+import {AlertComponent} from './shared/components/alert/alert.component'
+import {AlertService} from './shared/alert.service'
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -31,7 +29,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     MainLayoutComponent,
     HomePageComponent,
     BookComponent,
-    ListAuthorPipe
+    ListAuthorPipe,
+    AlertComponent
  
   ],
   imports: [
@@ -40,7 +39,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     AdminModule,
     ShareModule
   ],
-  providers: [INTERCEPTOR_PROVIDER],
+  providers: [INTERCEPTOR_PROVIDER, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

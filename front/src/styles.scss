@@ -3,9 +3,10 @@
 :root {
   --primary-color: #6663FF;
   --dark-color: #333333;
-  --light-color: #f4f4f4;
-  --danger-color: #EE4444;
-  --success-color: #6FDB8D;
+  --light-color: #f8f9fa;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
 }
 
 * {
@@ -111,6 +112,7 @@ img {
   margin: 0 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
+  max-width: 150px;
 
   &:disabled {
     cursor: not-allowed;
@@ -155,6 +157,8 @@ img {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
+  text-align: center;
+  width: 370px;
 }
 
 .btn-primary,
@@ -194,6 +198,14 @@ img {
 .badge-success,
 .alert-success {
   background: var(--success-color);
+  color: #fff;
+}
+
+.btn-warning,
+.bg-warning,
+.badge-warning,
+.alert-warning {
+  background: var(--warning-color);
   color: #fff;
 }
 

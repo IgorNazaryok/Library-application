@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Book } from 'src/app/shared/interface';
 import { BookService } from 'src/app/shared/book.service';
+import { AlertService } from 'src/app/shared/alert.service';
 
 @Component({
   selector: 'app-edit-page',
@@ -26,7 +27,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public bookService: BookService
+    public bookService: BookService,
+    private alertService:AlertService
   ) { }
 
   ngOnDestroy(): void {
@@ -56,9 +58,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
     this.uSub=this.bookService.UpdateBook({
       ...this.book,
       amount: this.form.value.amount
-    }).subscribe(()=>{
-      this.router.navigate(['/admin', 'dashboard'])
-    })
+    }).subscribe()
   }
 
 }

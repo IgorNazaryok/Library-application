@@ -47,10 +47,14 @@ namespace WebAPI.Services
             foreach (BookAuthors bookAuthor in bookAuthors)
             {
                var bookAuthorToRemove = bookAuthorsRepository.GetBookAutorByAuthorId(bookAuthor.AuthorId);
-                if (bookAuthorToRemove == null) 
+                if (bookAuthorToRemove != null) 
                 {
                     bookAuthorsToRemove.Add(bookAuthorToRemove);              
                 }
+            }
+            if (bookAuthorsToRemove.Count()!=0)
+            {
+                return new List<int>();
             }
             return bookAuthorsToRemove.Select(u => u.AuthorId);
         }
