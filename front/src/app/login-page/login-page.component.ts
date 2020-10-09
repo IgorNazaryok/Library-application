@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms'
-import {AuthRequest, User} from '../../shared/interface'
+import {AuthRequest} from '../shared/interface'
 import { AuthService } from '../shared/service/auth.service';
 import { Router } from '@angular/router';
 
@@ -35,20 +35,14 @@ export class LoginPageComponent implements OnInit {
     }
     this.auth.Login(model).subscribe(()=>{
       this.form.reset
+      this.auth.ClearAuthError() 
       if(this.auth.isRoleAdmin())
       {
-        this.router.navigate(['/admin', 'dashboard'])
-        console.log(this.auth.isRoleAdmin());
-        
+        this.router.navigate(['/admin', 'dashboard'])        
       }
       else{
         this.router.navigate(['/'])
-        console.log(this.auth.isRoleAdmin());
       }
-
     })
   }
-
-
-
 }

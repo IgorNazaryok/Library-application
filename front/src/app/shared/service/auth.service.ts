@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core'
 import {HttpClient, HttpErrorResponse} from '@angular/common/http'
-import { AuthRequest, AuthRespons } from '../../../shared/interface'
+import { AuthRequest, AuthRespons,authErrorMessage } from '../interface'
 import { Observable, Subject, throwError } from 'rxjs'
 import { catchError, tap } from 'rxjs/operators'
 
-import {authErrorMessage} from '../../../shared/interface'
 
 @Injectable({providedIn: 'root'})
 export class AuthService{

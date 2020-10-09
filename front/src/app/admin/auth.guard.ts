@@ -2,7 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import {Injectable} from '@angular/core'
 import { ActivatedRouteSnapshot, CanActivate, Router, RouteReuseStrategy, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService } from '../shared/service/auth.service';
 
 
 @Injectable()

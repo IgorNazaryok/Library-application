@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/admin/shared/service/auth.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -20,9 +20,7 @@ export class MainLayoutComponent implements OnInit {
   logout(event:Event){
     event.preventDefault()
     this.authService.logout()
-    this.router.navigate(['refresh=1'])
-    console.log('logout');
-    
+    this.router.navigate(['refresh=1'])    
   }
 
 }

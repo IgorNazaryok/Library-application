@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms'
-import {AuthRequest, User} from '../../shared/interface'
+import {AuthRequest, User} from '../shared/interface'
 import { AuthService } from '../shared/service/auth.service';
 import { Router } from '@angular/router';
+import { AlertService } from '../shared/alert.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class RegistrationPageComponent implements OnInit {
 
   constructor(
     public auth:AuthService,
-    private router: Router
+    private router: Router,
+    private alertService:AlertService
   ) { }
 
 
@@ -35,8 +37,9 @@ export class RegistrationPageComponent implements OnInit {
     }
     this.auth.Registration(model).subscribe(()=>{
       this.form.reset
+      this.alertService.success('Registration successful!')
       this.auth.ClearAuthError()
-      this.router.navigate(['/admin', 'login'])
+      this.router.navigate(['/', 'login'])
     })
   }
 

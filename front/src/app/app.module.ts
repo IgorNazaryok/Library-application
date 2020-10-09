@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Provider } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { registerLocaleData } from '@angular/common';
-import ruLocale from '@angular/common/locales/ru';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,11 +9,14 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdminModule } from './admin/admin.module';
 import { BookComponent } from './shared/components/book/book.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import {ShareModule} from './shared/shared.module';
 import {AuthInterceptor} from './shared/auth.interceptor';
 import {ListAuthorPipe} from './shared/listAutor.pipe';
 import {AlertComponent} from './shared/components/alert/alert.component'
 import {AlertService} from './shared/alert.service'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -30,10 +31,14 @@ const INTERCEPTOR_PROVIDER: Provider = {
     HomePageComponent,
     BookComponent,
     ListAuthorPipe,
-    AlertComponent
+    AlertComponent,
+    LoginPageComponent,
+    RegistrationPageComponent
  
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     AdminModule,

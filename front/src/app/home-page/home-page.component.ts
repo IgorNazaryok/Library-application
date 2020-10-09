@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from '../shared/interface';
 import { BookService } from '../shared/book.service';
-import { AuthService } from '../admin/shared/service/auth.service';
+import { AuthService } from '../shared/service/auth.service';
 
 @Component({
   selector: 'app-home-page',
