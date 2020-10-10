@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
           if (error.status === 401) {
            this.auth.logout()
            alert('Your session has expired! Please re-enter the site.')
-           this.router.navigate(['/admin', 'login'])
+           this.router.navigate(['/', 'login'])
           }
           return throwError(error)
         })

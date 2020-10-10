@@ -9,7 +9,7 @@ import { AuthService } from '../shared/service/auth.service';
 export class AuthGuard implements CanActivate{
 
 constructor(
-  private auth:AuthService,
+  private authService:AuthService,
   private router:Router
 ){}
 
@@ -17,12 +17,12 @@ constructor(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
       ): Observable<boolean> | Promise<boolean> | boolean {
-              if (this.auth.isAutentificated() && this.auth.isRoleAdmin()) {
+              if (this.authService.isAutentificated() && this.authService.isRoleAdmin()) {
                 return true
               }
               else {
-                this.auth.logout()
-                this.router.navigate(['/admin', 'login'])
+                this.authService.logout()
+                this.router.navigate(['/', 'login'])
               }
       }
     
