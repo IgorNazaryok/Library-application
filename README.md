@@ -67,13 +67,13 @@ The "My book" page is designed to display a list of books already taken by the u
 ![MyBook](./image/MyBook(3).png)
 ![MyBook](./image/MyBook(1).png)<br>
 
-### [**My book Page video**](https://youtu.be/A8V7Z6T0lAI)
+### [**My book Page demo video**](https://youtu.be/A8V7Z6T0lAI)
 <br>
 
 > ### Sing in admin panel
 To access the admin panel, you must authorize in the application with administrator credentials. For authorization in the application, you need to go to the login page using the "Sing In" link located on the right side of the application header, then select the input. If you have already logged in under the account of another user, you must log out using the "Sing Out" link.
 <br>
-### [**Sing in admin panel video**](https://youtu.be/q7QLS-zCOwc)
+### [**Sing in admin panel demo video**](https://youtu.be/q7QLS-zCOwc)
 <br>
 
 > ### Admin panel. 
@@ -86,14 +86,15 @@ The "Edit book" page allows you to change the total number of books in the libra
 ![Edit](./image/Edit.png)
 ![Edit](./image/Edit_.png)<br>
 <br> 
-### [**Edit book video**](https://youtu.be/6E7cYWqadrE)
+### [**Edit book demo video**](https://youtu.be/6E7cYWqadrE)
 <br> 
 
 - ### Create book 
 The "Create book" page allows you to add a new book to the database. Implemented validation of the book title field and the total number of books. The book title field is checked for emptiness, the number of books is at least one book. <br>
-! [Create] (./ image / NewBook.png) <br>
+
+![Create](./image/NewBook.png) <br>
 <br> 
-### [**Create book video**](https://youtu.be/BGVN-AxPVIA)
+### [**Create book demo video **](https://youtu.be/BGVN-AxPVIA)
 
 <br>
 
