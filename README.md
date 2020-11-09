@@ -94,7 +94,7 @@ The "Create book" page allows you to add a new book to the database. Implemented
 
 ![Create](./image/NewBook.png) <br>
 <br> 
-### [**Create book demo video **](https://youtu.be/BGVN-AxPVIA)
+### [**Create book demo video**](https://youtu.be/BGVN-AxPVIA)
 
 <br>
 
