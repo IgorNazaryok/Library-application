@@ -45,6 +45,17 @@ namespace WebAPI.Controllers
             BookDTO objectList = booksService.GetBookById(id);
             return Ok(objectList);
         }
+
+        [HttpGet("mybook/{ReaderId}")]
+        public ActionResult GetBooksByReaderId(int ReaderId)
+        {
+            List<BookDTO> objectList = booksService.GetBooksByReaderId(ReaderId);
+            if (objectList == null)
+            {
+                return BadRequest(new { message = "Alas, you haven't read a single book yet!" });
+            }
+            return Ok(objectList);
+        }
         [HttpPost]
         public ActionResult<Book> Post(BookDTO bookDTO)
         {

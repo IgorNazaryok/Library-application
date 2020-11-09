@@ -18,8 +18,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
    this.pSub=this.bookService.GetBooks().subscribe(data=>{
-      this.books=data
-      
+      this.books=data      
     })
   }
 

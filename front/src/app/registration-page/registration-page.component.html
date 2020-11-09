@@ -1,31 +1,33 @@
-<form class="card" [formGroup]="form" (ngSubmit)="submit()">
-    <h2>Registration</h2>
-    <small>
-        <div class="alert alert-danger" *ngIf="auth.authErrorMessage.ErrorMessage"> {{auth.authErrorMessage.ErrorMessage}} </div>    
-    </small>
-    <div class="form-control">
-        <label for="email">Email:</label>
-        <input id="email" type="email" formControlName="email">
-        <div class="validation">
-            <small>
-                <div class="alert alert-danger" *ngIf="auth.authErrorMessage.Email"> {{auth.authErrorMessage.Email}} </div>
-            </small>
+<div class="auth">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+        <h2>Registration</h2>
+        <small>
+            <div class="alert alert-danger" *ngIf="auth.authErrorMessage.ErrorMessage"> {{auth.authErrorMessage.ErrorMessage}} </div>    
+        </small>
+        <div class="form-control">
+            <label for="email">Email:</label>
+            <input id="email" type="email" formControlName="email">
+            <div class="validation">
+                <small>
+                    <div class="alert alert-danger" *ngIf="auth.authErrorMessage.Email"> {{auth.authErrorMessage.Email}} </div>
+                </small>
+            </div>
         </div>
-    </div>
-    <div class="form-control">
-        <label for="password">Password:</label>
-        <input id="password" type="password" formControlName="password">
-        <div class="validation">
-            <small>
-                <div class="alert alert-danger" *ngIf="auth.authErrorMessage.Password"> {{auth.authErrorMessage.Password}} </div>
-            </small>
+        <div class="form-control">
+            <label for="password">Password:</label>
+            <input id="password" type="password" formControlName="password">
+            <div class="validation">
+                <small>
+                    <div class="alert alert-danger" *ngIf="auth.authErrorMessage.Password"> {{auth.authErrorMessage.Password}} </div>
+                </small>
+            </div>
         </div>
-    </div>
-    <div class="group-auth-btn">
-        <button type="submit" class="btn btn-primary">Registration</button>
-        <button class="btn btn-link open"
-        (click)="this.auth.ClearAuthError()"
-        [routerLink]="['/','login']"
-        >Sing in</button>
-    </div>
-</form>
+        <div class="group-auth-btn">
+            <button type="submit" class="btn btn-primary">Registration</button>
+            <button class="btn btn-link open"
+            (click)="this.auth.ClearAuthError()"
+            [routerLink]="['/','login']"
+            >Sing in</button>
+        </div>
+    </form>    
+</div> 

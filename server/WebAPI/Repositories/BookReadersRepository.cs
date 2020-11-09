@@ -34,5 +34,10 @@ namespace WebAPI.Repositories
             }
             return bookReader;
         }
+
+        public List<int> GetBookIDsByReaderId(int ReaderId)
+        {
+            return _dbContext.BookReaders.Where(x => x.UserId == ReaderId).Select(x=>x.BookId).ToList();
+        }
     }
 }

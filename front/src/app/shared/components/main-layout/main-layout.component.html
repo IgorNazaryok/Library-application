@@ -1,21 +1,33 @@
 <app-alert></app-alert>   
 <nav class="navbar bg-primary">
-    <h1>Library</h1>
+    <h1>
+        <a routerLink="/">Library</a>
+    </h1>
 
-    <h4>
+    <div>
         <ul>
             <li *ngIf="authService.isRoleAdmin()">
                 <a [routerLink]="['/admin','dashboard']">Admin panel</a>                
             </li>
-
+            <li>
+                <a routerLinkActive="active" [routerLinkActiveOptions]={exact:true} [routerLink]="['/']">Home page</a>
+            </li>
             <li *ngIf="authService.isAutentificated(); else loginP">
-                <a href="#" (click)="logout($event)">Sing out</a>             
+                <a routerLinkActive="active" [routerLink]="['/mybooks']">My books</a>        
+                <strong>
+                <a href="#" (click)="logout($event)">Sing out</a>    
+                </strong>            
             </li>
             <ng-template #loginP>
-                <li><a [routerLink]="['/','login']">Sing in</a></li>      
+                <li> 
+                    <strong>
+                        <a routerLinkActive="active" [routerLink]="['/login']">Sing in</a>
+                    </strong>
+                                    
+                </li>
             </ng-template>   
         </ul>
-    </h4>
+    </div>
 </nav>
 
 <div class="conteiner">

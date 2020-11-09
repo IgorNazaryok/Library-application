@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {AuthService} from '../shared/service/auth.service'
+import {AlertService} from './alert.service'
 import {Router} from '@angular/router';
 import {catchError, tap} from 'rxjs/operators';
 
@@ -9,7 +10,8 @@ import {catchError, tap} from 'rxjs/operators';
 export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) {
   }
 
@@ -22,7 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           if (error.status === 401) {
            this.auth.logout()
-           alert('Your session has expired! Please re-enter the site.')
+	   this.alertService.warning('Your session has expired! Please re-enter the site.')
            this.router.navigate(['/', 'login'])
           }
           return throwError(error)

@@ -34,7 +34,8 @@ import {AlertAdminComponent} from './shared/components/alert-admin/alert-admin.c
         {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
         {path:'create', component: CreatePageComponent, canActivate: [AuthGuard]},
         {path:'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard]},
-        {path:'book/:id/edit', component: EditPageComponent, canActivate: [AuthGuard]}
+        {path:'book/:id/edit', component: EditPageComponent, canActivate: [AuthGuard]},
+        {path:'**', redirectTo: '/dashboard'},
       ]}
     ])
   ],

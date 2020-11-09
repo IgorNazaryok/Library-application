@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MyBooksPageComponent } from './myBook-page/myBooks-page.component';
 import { AdminModule } from './admin/admin.module';
 import { BookComponent } from './shared/components/book/book.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -29,6 +30,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     AppComponent,
     MainLayoutComponent,
     HomePageComponent,
+    MyBooksPageComponent,
     BookComponent,
     ListAuthorPipe,
     AlertComponent,

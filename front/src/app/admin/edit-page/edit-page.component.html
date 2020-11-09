@@ -1,8 +1,7 @@
-    <div class="card">
+    <div class="card card-create">
         <h2>{{book.name}}</h2>
         <p>Autors: {{book.authors | Author}}</p>  
-        <form [formGroup]="form" (ngSubmit)="submit()">
-          
+        <form [formGroup]="form" (ngSubmit)="submit()">          
          <div class="form-control">
              <label for="amount">Total amount: </label>
              <input id="amount" type="number" formControlName="amount" min="1">
@@ -12,7 +11,6 @@
                  </small>
              </div>
          </div>
-
    <button
      class="btn btn-primary"
      type="submit"

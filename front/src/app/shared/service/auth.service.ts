@@ -23,6 +23,10 @@ export class AuthService{
         return localStorage.getItem('role')
     }
 
+    get id(): string {
+        return localStorage.getItem('id')
+    }
+
     Login(model:AuthRequest):Observable<any>
     {
        return this.httpClient.post(`https://localhost:5001/users/authenticate`,model)

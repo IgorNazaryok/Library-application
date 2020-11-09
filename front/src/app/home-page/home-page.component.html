@@ -2,9 +2,5 @@
 *ngIf='books$ | async as books'
 >
 <div class="validation">
-  <small>
-      <div class="alert alert-danger" *ngIf="bookService.takeReturnBookError"> {{bookService.takeReturnBookError}} </div>
-  </small>
   <app-book *ngFor="let book of books" [book]="book" [isAutentificated]="isAutentificated"></app-book>
-
 </div>

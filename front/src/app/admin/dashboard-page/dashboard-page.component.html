@@ -19,10 +19,13 @@
            <td>{{book.amount-book.issued}}</td>
            <td>{{book.readers | ListReders }}</td>
            <td>
-               <button class="btn btn-link open"
+               <strong class="group-auth-btn">
+                <button class="btn btn-link open"
                [routerLink]="['/admin', 'book', book.id, 'edit']"
                >Edit</button>
-               <a (click)="remove(book.id)">Delete</a>
+               <a (click)="remove(book.id)">Delete</a>                  
+               </strong>
+
             </td>
         </tr>
     </tbody>

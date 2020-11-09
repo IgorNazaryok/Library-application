@@ -20,6 +20,8 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
+  background-image: url(image\library1.jpg);
+  background-attachment: fixed;
   color: #333;
 }
 
@@ -78,7 +80,9 @@ img {
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
-
+  background-color: #fff;
+  opacity: 0.95;
+  
   &-body {
     display: flex;
     justify-content: space-between;
@@ -89,6 +93,7 @@ img {
     margin-bottom: .5rem;
   }
 }
+
 .author{
   display: flex;
 }
@@ -125,8 +130,7 @@ img {
   background: none;
   padding: 0;
   margin: 0;
-  color: var(--primary-color);
-  
+  color: var(--primary-color);  
 }
 
 .btn-block {
@@ -157,8 +161,6 @@ img {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
-  text-align: center;
-  width: 370px;
 }
 
 .btn-primary,
@@ -258,7 +260,7 @@ img {
 input[type='text'],
 input[type='email'],
 input[type='password'],
-input[type='date'],
+input[type='number'],
 select,
 textarea {
   display: block;
@@ -276,16 +278,22 @@ button {
 table {
   width: 100%;
   border-collapse: collapse;
+  background-color: #fff;
+  opacity: 0.9;
+
 }
 
 table th,
 table td {
   padding: 1rem;
-  text-align: left;
+  text-align: center;
+}
+table tr{
+  border: 1px solid #ccc;
 }
 
 table th {
-  background: var(--light-color);
+  background: #ccc;  
 }
 
 .navbar {
@@ -297,6 +305,7 @@ table th {
   width: 100%;
   opacity: 0.9;
   margin-bottom: 1rem;
+  position: fixed;
 
   &.main {
     justify-content: center;
@@ -307,10 +316,10 @@ table th {
     display: flex;
   }
 
-  li.active a {
-    color: var(--dark-color);
-    font-weight: bold;
+  li a.active {
     cursor: default;
+    border: 1px solid var(--light-color);
+    border-radius: 5px;
   }
 
   a {

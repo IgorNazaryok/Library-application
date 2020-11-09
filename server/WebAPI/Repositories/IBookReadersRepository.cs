@@ -10,6 +10,7 @@ namespace WebAPI.Repositories
     public interface IBookReadersRepository : IRepository<BookReader>
     {
         BookReader Create(BookReader bookReaders);
+        List<int> GetBookIDsByReaderId(int ReaderId);
         BookReader Delete(int bookId, int userId);
     }
 }

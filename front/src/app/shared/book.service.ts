@@ -15,7 +15,7 @@ export class BookService {
    }
 
    public updateBookError: string
-
+   public bookReaderError=''
    Url:string=`https://localhost:5001/books`
    UrlBookReaders:string=`https://localhost:5001/bookReaders`
    
@@ -32,6 +32,7 @@ export class BookService {
            tap(this.getBooks)          
         )
     }
+
     GetBookById(id:string):Observable<Book>
     {       
         return this.httpClient.get<Book>(`${this.Url}/${id}`)
@@ -39,6 +40,18 @@ export class BookService {
            tap(this.getBook)          
         )
     }
+
+    GetBooksByReaderId(ReaderId:string):Observable<Book[]>
+    {       
+        return this.httpClient.get<Book[]>(`${this.Url}/mybook/${ReaderId}`)
+        .pipe(
+           tap(()=>{
+            this.getBooks
+            this.bookReaderError=''}),
+           catchError(this.CreateBookReaderMessage.bind(this))          
+        )
+    }
+
     CreateBook(book:Book):Observable<any>
     {
         return this.httpClient.post(this.Url,book)
@@ -57,6 +70,7 @@ export class BookService {
 
     UpdateBook(book:Book):Observable<any>
     {
+        this.updateBookError=''
         if(book.amount<book.issued)
         {
             this.updateBookError='The total amount cannot be less than the issued!'
@@ -64,6 +78,7 @@ export class BookService {
         }
         else if(book.amount==book.issued)
         {
+            this.alertService.success('Total amount has been updated!')
             return new Observable
         }
         else 
@@ -101,11 +116,9 @@ export class BookService {
     }
 
 
-    private CreateBookError (err: HttpErrorResponse) {
-        
+    private CreateBookError (err: HttpErrorResponse) {        
         this.message.Name=''
         this.message.Amount=''
-
             if(err.error.errors.hasOwnProperty('Name'))   
                 this.message.Name= err.error.errors.Name[0] 
             if(err.error.errors.hasOwnProperty('Amount'))
@@ -115,11 +128,16 @@ export class BookService {
          return throwError(err)        
     }
 
-    private getBooks(res:Book[]):Book[]{
+    private CreateBookReaderMessage (err: HttpErrorResponse) {             
+            if(err.error.hasOwnProperty('message'))   
+            this.bookReaderError= err.error.message                       
+         return throwError(err)        
+    }
 
+    private getBooks(res:Book[]):Book[]{     
         return res.map((book)=>
         {
-            book.issued = book.readers.length            
+            book.issued = book.readers.length                        
             return book       
         })
     }

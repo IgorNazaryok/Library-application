@@ -1,0 +1,11 @@
+<div class="books">
+      <div class="alert alert-warning" *ngIf="bookService.bookReaderError">
+        <h1 class='bookReaderError'>{{bookService.bookReaderError}}</h1> 
+      </div>    
+
+  <app-book *ngFor="let book of books" [book]="book" [isAutentificated]="isAutentificated"></app-book>
+</div>
+
+
+
+

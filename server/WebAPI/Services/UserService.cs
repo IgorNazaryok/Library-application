@@ -43,7 +43,7 @@ namespace WebAPI.Services
             {
                 return null;
             }
-            var now = DateTime.UtcNow;
+            var now = DateTime.Now;
             var jwt = new JwtSecurityToken(
                     issuer: AuthOptions.ISSUER,
                     audience: AuthOptions.AUDIENCE,

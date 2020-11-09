@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Book } from 'src/app/shared/interface';
 import { BookService } from 'src/app/shared/book.service';
-import { AlertService } from 'src/app/shared/alert.service';
+
 
 @Component({
   selector: 'app-edit-page',
@@ -26,9 +26,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     public bookService: BookService,
-    private alertService:AlertService
+
   ) { }
 
   ngOnDestroy(): void {

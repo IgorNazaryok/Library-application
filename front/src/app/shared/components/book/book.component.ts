@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BookService } from '../../book.service';
 import { Book, BookReader } from '../../interface';
+import { AuthService } from '../../service/auth.service';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -12,17 +13,18 @@ export class BookComponent implements OnInit {
   @Input() isAutentificated:boolean
   
   constructor(
-    private bookService:BookService
-
+    private bookService:BookService,
+    private authService:AuthService
   ) { }
 
   ngOnInit(): void {
+    
   }
 
   TakeBook(bookId:string){
     const bookReader:BookReader={
       bookId: bookId,
-      userId: +localStorage.getItem('id')
+      userId: +this.authService.id
     }
     this.bookService.TakeBook(bookReader).subscribe(()=>{
     this.book.issued++
@@ -35,7 +37,7 @@ export class BookComponent implements OnInit {
 
   
   ReturnBook(bookId:string){    
-    this.bookService.ReturnBook(bookId.toString(), localStorage.getItem('id')).subscribe(()=>{
+    this.bookService.ReturnBook(bookId.toString(), this.authService.id).subscribe(()=>{
       this.book.issued--
     })    
   }

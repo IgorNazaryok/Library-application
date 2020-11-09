@@ -13,11 +13,13 @@ namespace WebAPI.Services
     public class BookService : IBookService
     {
         private readonly IBookRepository bookRepository;
+        private readonly IBookReadersRepository bookReadersRepository;
         private readonly IMapper mapper;
 
-        public BookService(IBookRepository bookRepository, IMapper mapper)
+        public BookService(IBookRepository bookRepository, IBookReadersRepository bookReadersRepository, IMapper mapper)
         {
             this.bookRepository = bookRepository;
+            this.bookReadersRepository = bookReadersRepository;
             this.mapper = mapper;
         }
         public List<BookDTO> GetBooks()
@@ -29,6 +31,20 @@ namespace WebAPI.Services
         {
             var book = bookRepository.GetBookById(id);
             return mapper.Map<BookDTO>(book);
+        }
+        public List<BookDTO> GetBooksByReaderId(int ReaderId)
+        {
+            List<int> booksID = bookReadersRepository.GetBookIDsByReaderId(ReaderId);
+            if (booksID.Count() != 0)
+            {
+                List<Book> books = new List<Book>();
+                foreach (int bookId in booksID)
+                {
+                    books.Add(bookRepository.GetBookById(bookId));
+                }
+                return mapper.Map<List<BookDTO>>(books);
+            }   
+            return null;
         }
         public int CreateBook(BookDTO bookDTO)
         {

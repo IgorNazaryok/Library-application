@@ -1,44 +1,42 @@
-<div class="card">
-    <form [formGroup]="form" (ngSubmit)="submit()">
-        <h1>New book</h1>
-        <div class="form-control">
-            <label for="name">Title book:</label>
-            <input id="name" type="text" formControlName="name">
-            <div class="validation">
-                <small>
-                    <div class="alert alert-danger" *ngIf="bookService.message.Name"> The field cannot be empty </div>
-                </small>
+    <div class="card card-create">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <h1>New book</h1>
+            <div class="form-control">
+                <label for="name">Title book:</label>
+                <input id="name" type="text" formControlName="name">
+                <div class="validation">
+                    <small>
+                        <div class="alert alert-danger" *ngIf="bookService.message.Name"> The field cannot be empty </div>
+                    </small>
+                </div>
             </div>
-        </div>
-    
-        <div class="form-control">
-            <label for="author">Authors:</label>            
-            <div class="author">
-                <input id="author" type="text" formControlName="authors">
-                <a type="button" class="btn btn-dark" (click)="addAuthor()">Add</a>
-            </div>
-            <div *ngFor="let author of authorsBook">               
-                <p>{{author.fullName}}</p>
-            </div>
-            <div class="validation">
-                <small>
-                    <div class="alert alert-danger" *ngIf="bookService.message.Authors"> {{bookService.message.Authors}} </div>
-                </small>
-            </div>
-        </div>    
         
-        <div class="form-control">
-            <label for="amount">Total amount: </label>
-            <input id="amount" type="number" formControlName="amount" min="1">
-            <div class="validation">
-                <small>
-                    <div class="alert alert-danger" *ngIf="bookService.message.Amount"> {{bookService.message.Amount}} </div>
-                </small>
+            <div class="form-control">
+                <label for="author">Authors:</label>            
+                <div class="author">
+                    <input id="author" type="text" formControlName="authors">
+                    <a type="button" class="btn btn-dark" (click)="addAuthor()">Add</a>
+                </div>
+                <div *ngFor="let author of authorsBook">               
+                    <p>{{author.fullName}}</p>
+                </div>
+                <div class="validation">
+                    <small>
+                        <div class="alert alert-danger" *ngIf="bookService.message.Authors"> {{bookService.message.Authors}} </div>
+                    </small>
+                </div>
+            </div>    
+            
+            <div class="form-control">
+                <label for="amount">Total amount: </label>
+                <input id="amount" type="number" formControlName="amount" min="1">
+                <div class="validation">
+                    <small>
+                        <div class="alert alert-danger" *ngIf="bookService.message.Amount"> {{bookService.message.Amount}} </div>
+                    </small>
+                </div>
             </div>
-        </div>
-        <button type="submit" class="btn btn-block btn-primary">Add book</button>
-    </form>
-</div>
-   
-
-
+            <button type="submit" class="btn btn-block btn-primary">Add book</button>
+        </form>
+    </div>
+  

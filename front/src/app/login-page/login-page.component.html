@@ -1,4 +1,5 @@
-<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="auth">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <h2>Sing in</h2>
     <small>
         <div class="alert alert-danger" *ngIf="auth.authErrorMessage.ErrorMessage"> {{auth.authErrorMessage.ErrorMessage}} </div>    
@@ -28,5 +29,6 @@
         [routerLink]="['/','registration']"
         >Registration</button>
     </div>
+</form>    
+    </div>
 
-</form>

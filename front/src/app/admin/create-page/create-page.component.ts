@@ -41,8 +41,8 @@ export class CreatePageComponent implements OnInit {
     })    
   }
   addAuthor(){
-    if(this.form.value.authors){
-         var newAuthor= this.form.value.authors.toString().trim()
+    if(this.form.value.authors.trim()){
+         var newAuthor= this.form.value.authors.toString()
          const authorBook:Author={
           fullName:newAuthor
           }

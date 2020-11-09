@@ -4,10 +4,10 @@
 <div>
     <ul *ngIf="authService.isAutentificated() && authService.isRoleAdmin(); else HomeP">
         <li>
-            <a [routerLink]="['/admin','dashboard']">Dashboard</a>
+            <a routerLinkActive="active"[routerLink]="['/admin','dashboard']">Dashboard</a>
         </li>
         <li>
-            <a [routerLink]="['/admin','create']">Add Book</a>
+            <a routerLinkActive="active"[routerLink]="['/admin','create']">Add Book</a>
         </li>
         <li>
             <a routerLink="/">Home page</a>
