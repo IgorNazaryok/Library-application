@@ -1,13 +1,16 @@
 ![](./image/FilmFinity_logo.png)
 
->**_Library Aplication_** is a movie database and website. The database contains information about films, television series, as well as information about actors, directors, screenwriters and other personalities associated with the world of cinema.<br>
-On the site, unauthorized users have the opportunity to get acquainted with the latest news feed, view the latest additions of new films and series. Also on the site there is a page dedicated to the stars of the cinema.
-The site is localized for three languages ​​- Russian, Ukrainian and English.
-Any interested user of the site can register. After registration and authorization on the site, the user's personal account is available with a section of selected films and series.
+>**_Library Aplication_**. 
+Implementation of a simplified version of the library application.
+The app provides the following features:
+management of books available in the library: adding, deleting, changing the number. Each book can have multiple authors, an author can write multiple books (many-to-many relationship).
+the book can be borrowed by different people and at different times;
+Registration is required to receive books. The user must be able to register (a token is used for this task);
+the "admin" user role is required to manage book availability;
 
 ## Created with
 - Node.js
-- ASP.NET Core, Web API
+- ASP.NET Core 3.1, Web API
 - Angilar 8.0
 
 ## Clone
@@ -31,35 +34,35 @@ https://github.com/IgorNazaryok/Library-application
 
 > ### Unauthorized users
 
-Для не авторизованых пользователей на домашней странице доступен список имеющихся в базе книг с правом на просмотр. Любой не авторизованый пользователь может ознакомится с перечнем имеющихся в базе книг. Доступна следующая информация о книге:
-Название книги, автор (или авторы), общее количество книг в базе библиотеки, доступное количество книг.
-Для авторизации/регистрации пользователю доступна ссылка в правом верхнем углу с соответствующим функционалом. Для удобного возврата на главную страницу реализована ссылка "Home page".<br>
+For unauthorized users, a list of books available in the database with the right to view is available on the home page. Any unauthorized user can get acquainted with the list of books available in the database. The following information about the book is available:
+Book title, author (or authors), total number of books in the library database, available number of books.
+For authorization / registration, the user has a link in the upper right corner with the corresponding functionality. For a convenient return to the main page, the link "Home page" has been implemented. <br>
 
 ![Unauthorized users](./image/HomePage.png "Unauthorized users. Home page")
 
 > ### Registration
-Регистрация в приложении позволяет получить доступ к функционалу "Take/Return book" и к странице "My book". Для регистрации  приложении необходимо перейти на страницы регистрации с помощь ссылки "Sing In" расположенной в правой части заголовка приложения, далее выбрать регистрация.
-На странице реализована следующая валидация полей:
-- поле email и пароль не пустые; 
-- поле email является корректным электронным адресом;
-- введенный электронный адрес уникален и отсутствует в базе;
-- длина поля пароль от 6 до 20 символов.<br>
+Registration in the application allows you to access the "Take/Return" book functionality and the My book page. To register the application, go to the registration page using the "Sing In" link located on the right side of the application title, then select registration.
+The page has the following field validation:
+- the email and password fields are not empty;
+- the email field is a valid email address;
+- the entered email address is unique and does not exist in the database;
+- the length of the password field is from 6 to 20 characters. <br>
 ### [**Registration demo video.**](https://youtu.be/e1mO3riCRNU)
 <br><br>
 ![Registration users](./image/Registration.png "Registration fields required")
 ![Registration users](./image/Roman1996.png "User with email is already registered")
 
 > ### Sing In
-Для получения доступа к функционалу "Take/Return book" и страницы "My book" необходимо автороизоваться в приложении. Для авторизации в приложении необходимо перейти на страницы входа с помощь ссылки "Sing In" расположенной в правой части заголовка приложения, далее выбрать вход. Для авторизации в приложении необходимо ввести корректный логин, которым является email и пароль. В влючае не нахождения в базе пользователя с указанным email и паролем будет выдано предупреждение о не коррктности введеннфх учетных данных, вход не выполнен.<br>
+To access the "Take/Return" book functionality and the My book page, you need to authorize in the application. For authorization in the application, you need to go to the login page using the "Sing In" link located on the right side of the application header, then select the input. For authorization in the application, you must enter the correct login, which is an email and password. If the user is not in the user base with the specified email and password, a warning will be issued about the entered credentials are not correct, login failed. <br>
 ![Registration users](./image/Login.png "Login fields required")
 ![Registration users](./image/Login_.png "Login field email")<br>
-После успешной авторизации пользователю доступен функционал "Take/Return book" и страница "My book".<br>
+After successful authorization, the user can access the "Take / Return book" functionality and the "My book" page. <br>
 ![Registration users](./image/Login_.png "Login field email")
 ### [**Sing In demo video.**](https://youtu.be/FM8aUBduBT4)
 <br>
 
 > ### My book Page 
-Страница "My book" предназначена для отображения списка уже взятых пользователем книг. После первого входа список взятых книг на странице "My book" пуст, пользователю выведено соответствующее сообщение.<br>
+The "My book" page is designed to display a list of books already taken by the user. After the first login, the list of borrowed books on the "My book" page is empty, a corresponding message is displayed to the user. <br>
 ![MyBook](./image/MyBook(2).png)
 ![MyBook](./image/MyBook(3).png)
 ![MyBook](./image/MyBook(1).png)<br>
@@ -68,18 +71,18 @@ https://github.com/IgorNazaryok/Library-application
 <br>
 
 > ### Sing in admin panel
-Для получения доступа к панели администратора необходимо автороизоваться в приложении с учетными данными администратора. Для авторизации в приложении необходимо перейти на страницы входа с помощь ссылки "Sing In" расположенной в правой части заголовка приложения, далее выбрать вход. Если вход уже выполнен под учетной записью другого пользователя - необходимо выполнить выход с помощь ссылки "Sing Out".
+To access the admin panel, you must authorize in the application with administrator credentials. For authorization in the application, you need to go to the login page using the "Sing In" link located on the right side of the application header, then select the input. If you have already logged in under the account of another user, you must log out using the "Sing Out" link.
 <br>
 ### [**Sing in admin panel video**](https://youtu.be/q7QLS-zCOwc)
 <br>
 
 > ### Admin panel. 
-Панель предоставляет функционал добавления, редактирования, удаления имеющихся в базе книг.<br>
+The panel provides functionality for adding, editing, deleting books available in the database. <br>
 ![Admin](./image/AdminPanel.png)
 <br>
 
 - ### Edit book 
-Страница "Edit book" позволяет изменить общее количество книг в базе библиотеки. Реализована валидация поля изменяющего общего количество книг - общее количество не можен быть меньше количества выданых книг. При нарушении данного правила приложение выдает соответствующее предупреждение, количество не изменяется. После успешного изменения количества, система отображает соответствующее сообщение в верхней правой части.<br>
+The "Edit book" page allows you to change the total number of books in the library base. Implemented field validation that changes the total number of books - the total number cannot be less than the number of issued books. If this rule is violated, the application issues a corresponding warning, the quantity does not change. After successfully changing the quantity, the system displays a corresponding message in the upper right part. <br>
 ![Edit](./image/Edit.png)
 ![Edit](./image/Edit_.png)<br>
 <br> 
@@ -87,8 +90,8 @@ https://github.com/IgorNazaryok/Library-application
 <br> 
 
 - ### Create book 
-Страница "Create book" позволяет добавить новую книгу в базу. Реализована валидация поле названия книги и общего количества книг. Поле названия книги проверятся на пустоту, количество книг не менее одной книги.<br>
-![Create](./image/NewBook.png)<br>
+The "Create book" page allows you to add a new book to the database. Implemented validation of the book title field and the total number of books. The book title field is checked for emptiness, the number of books is at least one book. <br>
+! [Create] (./ image / NewBook.png) <br>
 <br> 
 ### [**Create book video**](https://youtu.be/BGVN-AxPVIA)
 
