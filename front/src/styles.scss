@@ -332,3 +332,36 @@ table th {
     }
   }
 }
+@media (max-width: 600px) {
+  .navbar{
+    h1{
+      display: none;
+    }
+    ul {
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      height: 100%;
+      
+    }
+    li{
+      width: 100%;
+      text-align: center;
+      margin-bottom: 2px;
+      border: 1px solid var(--light-color);
+      border-radius: 5px;
+      &:hover {
+        background: var(--success-color);
+      }
+    }
+      li a.active {
+        cursor: default;
+        color:  var(--dark-color);
+        font-weight: bold;
+        border-radius: none;
+        width: 100%;
+        border: none;
+
+      }    
+}
+}

@@ -14,7 +14,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import {ShareModule} from './shared/shared.module';
 import {AuthInterceptor} from './shared/auth.interceptor';
-import {ListAuthorPipe} from './shared/listAutor.pipe';
 import {AlertComponent} from './shared/components/alert/alert.component'
 import {AlertService} from './shared/alert.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,11 +31,9 @@ const INTERCEPTOR_PROVIDER: Provider = {
     HomePageComponent,
     MyBooksPageComponent,
     BookComponent,
-    ListAuthorPipe,
     AlertComponent,
     LoginPageComponent,
-    RegistrationPageComponent
- 
+    RegistrationPageComponent 
   ],
   imports: [
     FormsModule,

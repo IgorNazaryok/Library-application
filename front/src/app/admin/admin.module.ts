@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthGuard} from './auth.guard'
 import {ShareModule} from '../shared/shared.module'
 import {ListRedersPipe} from './shared/listRedersPipe'
-import {AuthorPipe} from './shared/authorPipe';
 import {AlertAdminComponent} from './shared/components/alert-admin/alert-admin.component'
 
 @NgModule({
@@ -20,7 +19,6 @@ import {AlertAdminComponent} from './shared/components/alert-admin/alert-admin.c
     CreatePageComponent,
     EditPageComponent,
     ListRedersPipe,
-    AuthorPipe,
     AlertAdminComponent
   ],
   imports: [

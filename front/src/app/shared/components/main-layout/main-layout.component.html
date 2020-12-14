@@ -12,8 +12,10 @@
             <li>
                 <a routerLinkActive="active" [routerLinkActiveOptions]={exact:true} [routerLink]="['/']">Home page</a>
             </li>
-            <li *ngIf="authService.isAutentificated(); else loginP">
-                <a routerLinkActive="active" [routerLink]="['/mybooks']">My books</a>        
+            <li *ngIf="authService.isAutentificated()">
+                <a routerLinkActive="active" [routerLink]="['/mybooks']">My books</a> 
+            </li>
+            <li *ngIf="authService.isAutentificated(); else loginP">  
                 <strong>
                 <a href="#" (click)="logout($event)">Sing out</a>    
                 </strong>            

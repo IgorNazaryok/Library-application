@@ -1,5 +1,11 @@
 .books{
     max-width: 800px;
     margin:0 auto;
-    padding-top: 80px
+    padding: 80px 20px 0px
+}
+
+@media (max-width: 600px) {
+    .books{
+        padding-top: 140px
+    }
 }

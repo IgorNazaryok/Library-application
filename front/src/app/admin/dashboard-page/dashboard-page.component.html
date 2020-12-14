@@ -14,7 +14,7 @@
         <tr *ngFor='let book of books; let idx=index'>
            <td>{{idx+1}}</td>
            <td>{{book.name}}</td>
-            <td>{{book.authors | Author}}</td>
+            <td>{{book.authors | ListAuthor}}</td>
            <td>{{book.amount}}</td>
            <td>{{book.amount-book.issued}}</td>
            <td>{{book.readers | ListReders }}</td>
